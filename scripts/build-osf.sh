@@ -20,22 +20,23 @@ mkdir -p "$OUTPUT_DIR"
 
 cp -r "$SRC_DIR"/* "$BUILD_DIR"/
 
-sed -i.bak "s/\"version\" : 1/\"version\" : ${VERSION}/g" "$BUILD_DIR/items.json" 2>/dev/null || \
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  sed -i.bak "s/\"version\" : 1/\"version\" : ${VERSION}/g" "$BUILD_DIR/items.json"
+  sed -i.bak "s/CleanOsmand v1:/CleanOsmand ${VERSION}:/g" "$BUILD_DIR/items.json"
+  sed -i.bak "s/<renderingStyle name=\"CleanOsmand\"/<renderingStyle name=\"CleanOsmand ${VERSION}\"/g" "$BUILD_DIR/rendering/CleanOsmand.render.xml"
+  rm -f "$BUILD_DIR/items.json.bak" "$BUILD_DIR/rendering/CleanOsmand.render.xml.bak"
+else
   sed -i "s/\"version\" : 1/\"version\" : ${VERSION}/g" "$BUILD_DIR/items.json"
-rm -f "$BUILD_DIR/items.json.bak"
-
-sed -i.bak "s/CleanOsmand v1:/CleanOsmand ${VERSION}:/g" "$BUILD_DIR/items.json" 2>/dev/null || \
   sed -i "s/CleanOsmand v1:/CleanOsmand ${VERSION}:/g" "$BUILD_DIR/items.json"
-rm -f "$BUILD_DIR/items.json.bak"
-
-sed -i.bak "s/<renderingStyle name=\"CleanOsmand\"/<renderingStyle name=\"CleanOsmand ${VERSION}\"/g" "$BUILD_DIR/rendering/CleanOsmand.render.xml" 2>/dev/null || \
   sed -i "s/<renderingStyle name=\"CleanOsmand\"/<renderingStyle name=\"CleanOsmand ${VERSION}\"/g" "$BUILD_DIR/rendering/CleanOsmand.render.xml"
-rm -f "$BUILD_DIR/rendering/CleanOsmand.render.xml.bak"
+fi
+
+OSF_ABS_PATH="$(cd "$OUTPUT_DIR" && pwd)/${OSF_NAME}"
 
 cd "$BUILD_DIR"
-rm -f "$OUTPUT_DIR/$OSF_NAME"
-zip -r -X "$OUTPUT_DIR/$OSF_NAME" . -x '**/.DS_Store' -x '.DS_Store'
+rm -f "$OSF_ABS_PATH"
+zip -r -X "$OSF_ABS_PATH" . -x '**/.DS_Store' -x '.DS_Store'
 
-echo "==> Created: $OUTPUT_DIR/$OSF_NAME"
+echo "==> Created: $OSF_ABS_PATH"
 echo "==> Contents:"
-unzip -l "$OUTPUT_DIR/$OSF_NAME"
+unzip -l "$OSF_ABS_PATH"
