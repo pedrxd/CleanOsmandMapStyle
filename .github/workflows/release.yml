@@ -1,0 +1,68 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - 'release/V*'
+
+jobs:
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extract version from branch name
+        id: version
+        run: |
+          BRANCH="${GITHUB_REF_NAME}"
+          VERSION="${BRANCH#release/}"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "==> Release version: ${VERSION}"
+
+      - name: Build OSF
+        run: |
+          chmod +x scripts/build-osf.sh
+          scripts/build-osf.sh "${{ steps.version.outputs.version }}" dist
+
+      - name: Verify OSF
+        run: |
+          OSF_FILE="dist/CleanOsmand-${{ steps.version.outputs.version }}.osf"
+          if [ ! -f "$OSF_FILE" ]; then
+            echo "ERROR: OSF file not found: $OSF_FILE"
+            exit 1
+          fi
+          echo "==> OSF verified: $OSF_FILE"
+          unzip -l "$OSF_FILE"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.version }}
+          name: CleanOsmand ${{ steps.version.outputs.version }}
+          body: |
+            ## CleanOsmand ${{ steps.version.outputs.version }}
+
+            ### Instalación
+            1. Descarga `CleanOsmand-${{ steps.version.outputs.version }}.osf`
+            2. Ábrelo con OsmAnd, o impórtalo desde Menú → Ajustes → Importar
+            3. Selecciona "CleanOsmand" en Configurar mapa → Estilo de mapa
+
+            ### Cambios
+            - Flechas de sentido único en blanco con borde gris
+            - Estilo minimalista en escala de grises
+          files: |
+            dist/CleanOsmand-${{ steps.version.outputs.version }}.osf
+          draft: false
+          prerelease: false
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CleanOsmand-${{ steps.version.outputs.version }}.osf
+          path: dist/CleanOsmand-${{ steps.version.outputs.version }}.osf
+          retention-days: 90
