@@ -2064,16 +2064,6 @@
 			<apply_if nightMode="true" color="#835286" strokeWidth_2="0.5" color_2="#c98df7"/>
 		</case>
 		
-		<case minzoom="14" tag="barrier" value="city_wall">
-			<case maxzoom="14" strokeWidth_2="1:1"/>
-			<case maxzoom="15" strokeWidth_2="2:2"/>
-			<case maxzoom="16" strokeWidth_2="3.5:3.5"/>
-			<case minzoom="17" strokeWidth_2="4.5:4.5"/>
-			<apply color="#77999999" color_2="#555555" cap_2="SQUARE">
-				<apply_if nightMode="true" color="#77444444" color_2="#555555"/>
-			</apply>
-		</case>
-
 		<switch>
 			<case tag="public_transport" value="platform"/>
 			<case tag="railway" value="halt"/>
@@ -2612,15 +2602,6 @@
 			</apply_if>
 		</switch>
 
-		<switch minzoom="16">
-			<case tag="barrier" value="fence"/>
-			<case tag="barrier" value="wall"/>
-			<case tag="barrier" value="jersey_barrier"/>
-			<apply color="#333333" strokeWidth="0.7">
-				<apply_if nightMode="true" color="#cccccc"/>
-			</apply>
-		</switch>
-
 		<switch>
 			<switch minzoom="2">
 				<case tag="admin_level" value="0"/>
@@ -2647,13 +2628,6 @@
 				</apply>
 			</switch>
 		</switch>
-
-		<case minzoom="14" tag="barrier" value="city_wall">
-			<case maxzoom="14" strokeWidth="2:2"/>
-			<case maxzoom="15" strokeWidth="3:3"/>
-			<case minzoom="16" strokeWidth="4.5:4.5"/>
-			<apply color="#555555"/>
-		</case>
 
 		<switch>
 			<switch minzoom="12" tag="waterway" value="stream">
