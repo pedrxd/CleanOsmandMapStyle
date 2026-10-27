@@ -29,6 +29,25 @@ Descarga la \u00faltima release desde [Releases](https://github.com/pedrxd/Clean
 
 Importante: mant\u00e9n desactivada la opci\u00f3n "Hide polygons (exc. buildings)" / "Ocultar pol\u00edgonos (exc. edificios)" en los ajustes del estilo; si se activa, parques, agua y usos de suelo se vuelven transparentes.
 
+## Desarrollo: preview de snapshots
+
+Para iterar r\u00e1pidamente sin cargar el estilo manualmente en el m\u00f3vil cada vez, hay un sistema de generaci\u00f3n autom\u00e1tica de snapshots v\u00eda ADB:
+
+```bash
+# 1. Conecta el m\u00f3vil por USB con depuraci\u00f3n USB activada
+# 2. Aseg\u00farate de tener un mapa .obf descargado (ej: Andorra, ~2MB)
+# 3. Genera snapshots de 10 ubicaciones de prueba predefinidas
+./scripts/preview/generate-snapshots.sh
+
+# 4. Abre la galer\u00eda generada autom\u00e1ticamente
+open previews/$(ls -t previews/ | head -1)/gallery.html
+
+# 5. Para comparar dos ejecuciones (antes/despu\u00e9s de un cambio)
+./scripts/preview/compare-previews.sh <run-1> <run-2>
+```
+
+Las ubicaciones de prueba se configuran en `scripts/preview/test-locations.json`. Consulta [scripts/preview/README.md](scripts/preview/README.md) para m\u00e1s detalles.
+
 ## Cr\u00e9ditos y licencia
 
 Derivado de LightRS de xmd5a y del estilo por defecto de OsmAnd. Licencia GPLv3, la misma que el trabajo original. Consulta el archivo LICENSE.
