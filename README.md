@@ -43,4 +43,4 @@ Importante: mantén desactivada la opción "Hide polygons (exc. buildings)" / "O
 
 ## Créditos y licencia
 
-Derivado de LightRS de xmd5a (https://forum.openstreetmap.org/viewtopic.php?id=23125) y del estilo por defecto de OsmAnd. Licencia GPLv3, la misma que el trabajo original. Consulta el archivo LICENSE.
+Derivado de LightRS de xmd5a y del estilo por defecto de OsmAnd. Licencia GPLv3, la misma que el trabajo original. Consulta el archivo LICENSE.
