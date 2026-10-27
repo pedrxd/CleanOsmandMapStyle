@@ -1,0 +1,83 @@
+name: Build OSF
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build OSF package
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Determine version
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            VERSION="pr-${{ github.event.pull_request.number }}-${GITHUB_SHA::7}"
+          elif [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            VERSION="beta-${GITHUB_SHA::7}"
+          else
+            VERSION="dev-${GITHUB_SHA::7}"
+          fi
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "==> Version: ${VERSION}"
+
+      - name: Build OSF
+        run: |
+          chmod +x scripts/build-osf.sh
+          scripts/build-osf.sh "${{ steps.version.outputs.version }}" dist
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CleanOsmand-${{ steps.version.outputs.version }}.osf
+          path: dist/CleanOsmand-${{ steps.version.outputs.version }}.osf
+          retention-days: 30
+
+      - name: Comment PR with download link
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const version = '${{ steps.version.outputs.version }}';
+            const runUrl = '${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}';
+
+            const body = `## 🧪 OSF de prueba generado
+
+**Versión:** \`${version}\`
+
+### Descargar
+1. Ve a la pestaña [Actions](${runUrl}) de este run
+2. Descarga el artifact \`CleanOsmand-${version}.osf\`
+3. Instálalo en OsmAnd para probar los cambios
+
+### Instalación
+1. Abre el \`.osf\` con OsmAnd, o impórtalo desde Menú → Ajustes → Importar
+2. Selecciona "CleanOsmand" en Configurar mapa → Estilo de mapa`;
+
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            });
+
+      - name: Summary
+        run: |
+          echo "## OSF generado" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Versión:** \`${{ steps.version.outputs.version }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Archivo:** \`dist/CleanOsmand-${{ steps.version.outputs.version }}.osf\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Rama:** \`${{ github.ref_name }}\`" >> "$GITHUB_STEP_SUMMARY"

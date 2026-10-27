@@ -1,0 +1,14 @@
+# Build artifacts (generados por CI)
+dist/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editores
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
