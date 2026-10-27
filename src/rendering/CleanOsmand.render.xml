@@ -2135,16 +2135,16 @@
 			</switch>
 			<switch minzoom="9" maxzoom="15">
 				<case tag="highway" value="secondary" color="$secondaryRoadColor"/>
+				<apply cap="ROUND">
+					<case maxzoom="9" strokeWidth="1.2:1.2"/>
+					<case maxzoom="10" strokeWidth="1.4:1.4"/>
+					<case maxzoom="11" strokeWidth="1.6:1.6"/>
+					<case maxzoom="12" strokeWidth="2:2"/>
+					<case maxzoom="13" strokeWidth="2.3:2.3"/>
+					<case maxzoom="14" strokeWidth="3:3"/>
+					<case maxzoom="15" strokeWidth="4:4"/>
+				</apply>
 			</switch>
-			<apply minzoom="9" cap="ROUND">
-				<case maxzoom="9" strokeWidth="1.6:1.6"/>
-				<case maxzoom="10" strokeWidth="1.8:1.8"/>
-				<case maxzoom="11" strokeWidth="2:2"/>
-				<case maxzoom="12" strokeWidth="2.5:2.5"/>
-				<case maxzoom="13" strokeWidth="2.7:2.7"/>
-				<case maxzoom="14" strokeWidth="3.6:3.6"/>
-				<case maxzoom="15" strokeWidth="5:5"/>
-			</apply>
 			<apply_if minzoom="12" additional="tunnel=yes" pathEffect="4_4" cap="BUTT"/>
 			<apply_if minzoom="12" additional="covered=yes" pathEffect="4_4" cap="BUTT"/>
 			<!-- Bridges -->
@@ -2224,7 +2224,6 @@
 					<case tag="highway" value="motorway" color="$motorwayRoadColor"/>
 					<case tag="highway" value="trunk" color="$trunkRoadColor"/>
 					<case tag="highway" value="primary" color="$primaryRoadColor"/>
-					<case tag="highway" value="secondary" color="$secondaryRoadColor"/>
 					<apply cap="ROUND">
 						<case>
 							<case maxzoom="16" strokeWidth="7:7"/>
@@ -2245,10 +2244,30 @@
 					</apply>
 				</switch>
 				<switch>
+					<case tag="highway" value="secondary" color="$secondaryRoadColor"/>
+					<apply cap="ROUND">
+						<case>
+							<case maxzoom="16" strokeWidth="6:6"/>
+							<case maxzoom="17" strokeWidth="7.2:7.2"/>
+							<case maxzoom="18" strokeWidth="9:9"/>
+							<case minzoom="19" strokeWidth="10.5:10.5"/>
+						</case>
+						<apply_if additional="tunnel=yes" pathEffect="4_4" cap="BUTT"/>
+						<apply_if additional="covered=yes" pathEffect="4_4" cap="BUTT"/>
+						<!-- Bridges -->
+						<apply_if additional="bridge=yes" color_0="$bridgeDayColor" shadowRadius=":0" cap="SQUARE" cap_0="BUTT">
+							<case maxzoom="16" strokeWidth_0="7.5:9"/>
+							<case maxzoom="17" strokeWidth_0="9:10.5"/>
+							<case maxzoom="18" strokeWidth_0="11.5:13.5"/>
+							<case minzoom="19" strokeWidth_0="12.5:14.5"/>
+							<apply_if nightMode="true" color_0="$bridgeNightColor"/>
+						</apply_if>
+					</apply>
+				</switch>
+				<switch>
 					<case tag="highway" value="motorway_link" color="$motorwayRoadColor"/>
 					<case tag="highway" value="trunk_link" color="$trunkRoadColor"/>
 					<case tag="highway" value="primary_link" color="$primaryRoadColor"/>
-					<case tag="highway" value="secondary_link" color="$secondaryRoadColor"/>
 					<apply cap="ROUND">
 						<case>
 							<case maxzoom="16" strokeWidth="5.3:5.3"/>
@@ -2264,6 +2283,27 @@
 							<case maxzoom="17" strokeWidth_0="8:8"/>
 							<case maxzoom="18" strokeWidth_0="10:10"/>
 							<case minzoom="19" strokeWidth_0="11:11"/>
+							<apply_if nightMode="true" color_0="$bridgeNightColor"/>
+						</apply_if>
+					</apply>
+				</switch>
+				<switch>
+					<case tag="highway" value="secondary_link" color="$secondaryRoadColor"/>
+					<apply cap="ROUND">
+						<case>
+							<case maxzoom="16" strokeWidth="4.5:4.5"/>
+							<case maxzoom="17" strokeWidth="5.5:5.5"/>
+							<case maxzoom="18" strokeWidth="7:7"/>
+							<case minzoom="19" strokeWidth="8:8"/>
+						</case>
+						<apply_if additional="tunnel=yes" pathEffect="4_4" cap="BUTT"/>
+						<apply_if additional="covered=yes" pathEffect="4_4" cap="BUTT"/>
+						<!-- Bridges -->
+						<apply_if additional="bridge=yes" color_0="$bridgeDayColor" shadowRadius=":0" cap="SQUARE" cap_0="BUTT">
+							<case maxzoom="16" strokeWidth_0="6.3:6.3"/>
+							<case maxzoom="17" strokeWidth_0="7:7"/>
+							<case maxzoom="18" strokeWidth_0="8.5:8.5"/>
+							<case minzoom="19" strokeWidth_0="9.5:9.5"/>
 							<apply_if nightMode="true" color_0="$bridgeNightColor"/>
 						</apply_if>
 					</apply>
@@ -2457,13 +2497,13 @@
 
 		<switch>
 			<case minzoom="12" tag="highway" value="track" color="#b39d72" pathEffect="4_2">
-				<case moreDetailed="true" maxzoom="12" strokeWidth="0.4" pathEffect="3_1.5"/>
-				<case maxzoom="13" strokeWidth="0.8" pathEffect="4_2"/>
-				<case maxzoom="14" strokeWidth="1.4" pathEffect="5_2.5"/>
-				<case maxzoom="15" strokeWidth="2" pathEffect="7_3.5"/>
-				<case maxzoom="16" strokeWidth="2.5" pathEffect="8_4"/>
-				<case maxzoom="17" strokeWidth="3" pathEffect="11_5.5"/>
-				<case minzoom="18" strokeWidth="5" pathEffect="15_7.5"/>
+				<case moreDetailed="true" maxzoom="12" strokeWidth="0.3" pathEffect="3_1.5"/>
+				<case maxzoom="13" strokeWidth="0.5" pathEffect="4_2"/>
+				<case maxzoom="14" strokeWidth="0.8" pathEffect="5_2.5"/>
+				<case maxzoom="15" strokeWidth="1.2" pathEffect="7_3.5"/>
+				<case maxzoom="16" strokeWidth="2" pathEffect="8_4"/>
+				<case maxzoom="17" strokeWidth="3.5" pathEffect="11_5.5"/>
+				<case minzoom="18" strokeWidth="4.5" pathEffect="15_7.5"/>
 			</case>
 			<apply onewayArrowsColor="$trackPathHighwayOnewayArrowsColor"/>
 			<apply_if hideWoodScrubs="false" color="$trackDayColor"/>
@@ -2499,26 +2539,26 @@
 			<switch>
 				<case minzoom="12" tag="highway" value="pedestrian"/>
 				<apply color="$nonMotoVehicleRoadColor" cap="ROUND">
-					<case moreDetailed="true" maxzoom="12" strokeWidth="1"/>
-					<case moreDetailed="true" maxzoom="13" strokeWidth="1.5"/>
+					<case moreDetailed="true" maxzoom="12" strokeWidth="0.5"/>
+					<case moreDetailed="true" maxzoom="13" strokeWidth="0.8"/>
 					<apply_if minzoom="14">
-						<case maxzoom="14" strokeWidth="3"/>
-						<case maxzoom="15" strokeWidth="4.5"/>
-						<case maxzoom="16" strokeWidth="7.5"/>
-						<case maxzoom="17" strokeWidth="12"/>
-						<case minzoom="18" strokeWidth="17"/>
+						<case maxzoom="14" strokeWidth="1"/>
+						<case maxzoom="15" strokeWidth="1.2"/>
+						<case maxzoom="16" strokeWidth="1.5"/>
+						<case maxzoom="17" strokeWidth="2"/>
+						<case minzoom="18" strokeWidth="2.5"/>
 					</apply_if>
 				</apply>
 				<apply onewayArrowsColor="$mainHighwayOnewayArrowsColor"/>
 				<apply_if additional="tunnel=yes" pathEffect="4_4" cap="BUTT"/>
 				<apply_if additional="covered=yes" pathEffect="4_4" cap="BUTT"/>
 				<apply_if additional="bridge=yes" minzoom="14" color_0="$bridgeDayColor" cap="SQUARE" cap_0="BUTT">
-					<case maxzoom="14" strokeWidth_0="4:2"/>
-					<case maxzoom="15" strokeWidth_0="6:2"/>
-					<case maxzoom="16" strokeWidth_0="8.5:2"/>
-					<case maxzoom="17" strokeWidth_0="13.5:2"/>
-					<case maxzoom="18" strokeWidth_0="20:2"/>
-					<case minzoom="19" strokeWidth_0="20:2"/>
+					<case maxzoom="14" strokeWidth_0="2:1"/>
+					<case maxzoom="15" strokeWidth_0="2.5:1"/>
+					<case maxzoom="16" strokeWidth_0="3:1"/>
+					<case maxzoom="17" strokeWidth_0="4:1"/>
+					<case maxzoom="18" strokeWidth_0="5:1"/>
+					<case minzoom="19" strokeWidth_0="5:1"/>
 					<apply_if nightMode="true" color_0="$bridgeNightColor"/>
 				</apply_if>
 				<apply_if hideAccess="false" additional="access=no" disable="true"/>
