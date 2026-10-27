@@ -1,0 +1,30 @@
+{
+   "version":1,
+   "items":[
+      {
+         "type":"PLUGIN",
+         "pluginId":"cleanosmand.style",
+         "version" : 1,
+         "icon": {
+            "" : "@cleanosmand-icon.png"
+         },
+         "name":{
+            "":"CleanOsmand"
+         },
+         "description":{
+            "":"CleanOsmand v1: estilo de mapa minimalista para OsmAnd con flechas de sentido unico blancas con borde gris."
+         }
+      },
+      {
+         "type":"RESOURCES",
+         "pluginId":"cleanosmand.style",
+         "file":"res"
+      },
+      {
+         "type":"FILE",
+         "pluginId":"cleanosmand.style",
+         "subtype" : "rendering_style",
+         "file":"\\/rendering\\/CleanOsmand.render.xml"
+      }
+   ]
+}
