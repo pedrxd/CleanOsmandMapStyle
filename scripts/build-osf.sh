@@ -21,14 +21,12 @@ mkdir -p "$OUTPUT_DIR"
 cp -r "$SRC_DIR"/* "$BUILD_DIR"/
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  sed -i.bak "s/\"version\" : 1/\"version\" : ${VERSION}/g" "$BUILD_DIR/items.json"
+  sed -i.bak "s/\"\":\"CleanOsmand\"/\"\":\"CleanOsmand ${VERSION}\"/g" "$BUILD_DIR/items.json"
   sed -i.bak "s/CleanOsmand v1:/CleanOsmand ${VERSION}:/g" "$BUILD_DIR/items.json"
-  sed -i.bak "s/<renderingStyle name=\"CleanOsmand\"/<renderingStyle name=\"CleanOsmand ${VERSION}\"/g" "$BUILD_DIR/rendering/CleanOsmand.render.xml"
-  rm -f "$BUILD_DIR/items.json.bak" "$BUILD_DIR/rendering/CleanOsmand.render.xml.bak"
+  rm -f "$BUILD_DIR/items.json.bak"
 else
-  sed -i "s/\"version\" : 1/\"version\" : ${VERSION}/g" "$BUILD_DIR/items.json"
+  sed -i "s/\"\":\"CleanOsmand\"/\"\":\"CleanOsmand ${VERSION}\"/g" "$BUILD_DIR/items.json"
   sed -i "s/CleanOsmand v1:/CleanOsmand ${VERSION}:/g" "$BUILD_DIR/items.json"
-  sed -i "s/<renderingStyle name=\"CleanOsmand\"/<renderingStyle name=\"CleanOsmand ${VERSION}\"/g" "$BUILD_DIR/rendering/CleanOsmand.render.xml"
 fi
 
 OSF_ABS_PATH="$(cd "$OUTPUT_DIR" && pwd)/${OSF_NAME}"
@@ -40,3 +38,7 @@ zip -r -X "$OSF_ABS_PATH" . -x '**/.DS_Store' -x '.DS_Store'
 echo "==> Created: $OSF_ABS_PATH"
 echo "==> Contents:"
 unzip -l "$OSF_ABS_PATH"
+
+echo "==> Validating items.json"
+python3 -c "import json, sys; json.load(open('$BUILD_DIR/items.json')); print('    items.json: OK')"
+python3 -c "import xml.etree.ElementTree as ET; ET.parse('$BUILD_DIR/rendering/CleanOsmand.render.xml'); print('    render.xml: OK')"
