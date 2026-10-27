@@ -35,7 +35,7 @@ Estilo de renderizado minimalista y limpio para OsmAnd. Es autónomo (no depende
 
 Descarga la última release desde [Releases](https://github.com/pedrxd/CleanOsmandMapStyle/releases):
 
-1. Descarga `CleanOsmand-Vx.y.z.osf`
+1. Descarga `CleanOsmand-vx.y.z.osf`
 2. Ábrelo con OsmAnd (o impórtalo desde Menú → Ajustes → Importar/Exportar → Importar desde archivo)
 3. OsmAnd instalará automáticamente el estilo y los recursos (iconos de flechas personalizados)
 4. En Configurar mapa, elige CleanOsmand como estilo de mapa
@@ -75,7 +75,7 @@ scripts/
 
 .github/workflows/
 ├── build-osf.yml             ← CI: genera OSF de prueba (PRs) y beta (main)
-└── release.yml               ← CI: genera release en ramas release/Vx.y
+└── release.yml               ← CI: genera release en ramas release/vx.y
 ```
 
 ## Flujo de trabajo (GitFlow)
@@ -86,9 +86,9 @@ main (trunk)
   │
   ├──► feature/xxx ──► PR ──► main     (cada PR genera OSF de prueba)
   │
-  └──► release/V1.0 ──► push ──► GitHub Release con OSF
-         release/V1.1 ──► push ──► GitHub Release con OSF
-         release/V2.0 ──► push ──► GitHub Release con OSF
+  └──► release/v1.0 ──► push ──► GitHub Release con OSF
+         release/v1.1 ──► push ──► GitHub Release con OSF
+         release/v2.0 ──► push ──► GitHub Release con OSF
 ```
 
 ### Tipos de builds
@@ -97,13 +97,13 @@ main (trunk)
 | --- | --- | --- |
 | `main` (push) | `beta-abc1234` | Actions artifacts |
 | PR (pull_request) | `pr-3-abc1234` | Comentario del PR + Actions |
-| `release/V1.0` (push) | `1.0` | [GitHub Releases](https://github.com/pedrxd/CleanOsmandMapStyle/releases) |
+| `release/v1.0` (push) | `1.0` | [GitHub Releases](https://github.com/pedrxd/CleanOsmandMapStyle/releases) |
 
 ### Cómo crear una release
 
-1. Crea una rama desde `main`: `git checkout -b release/V1.0`
+1. Crea una rama desde `main`: `git checkout -b release/v1.0`
 2. Haz los ajustes finales (versionado, changelog)
-3. Push: `git push -u origin release/V1.0`
+3. Push: `git push -u origin release/v1.0`
 4. La CI genera automáticamente la release en GitHub con el `.osf`
 
 ### Desarrollo local
