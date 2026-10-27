@@ -41,15 +41,6 @@ Estilo de renderizado minimalista y limpio para OsmAnd. Es autónomo (no depende
 
 Importante: mantén desactivada la opción "Hide polygons (exc. buildings)" / "Ocultar polígonos (exc. edificios)" en los ajustes del estilo; si se activa, parques, agua y usos de suelo se vuelven transparentes.
 
-## Verificar la versión instalada
-
-Abre el archivo y comprueba que aparecen una vez cada uno:
-
-- `attrColorValue="#ababab"` (color de autovía en modo día)
-- `attrColorValue="#a1e09a"` (color de parque en modo día)
-
-Si no aparecen, tienes una versión anterior y OsmAnd está renderizando el estilo viejo cacheado.
-
 ## Créditos y licencia
 
 Derivado de LightRS de xmd5a (https://forum.openstreetmap.org/viewtopic.php?id=23125) y del estilo por defecto de OsmAnd. Licencia GPLv3, la misma que el trabajo original. Consulta el archivo LICENSE.
