@@ -12,3 +12,6 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Previews de snapshots (generados localmente)
+previews/

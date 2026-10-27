@@ -1,0 +1,93 @@
+{
+  "_comment": "Configuración de ubicaciones de prueba para generar snapshots del estilo CleanOsmand. Edita este archivo para añadir/quitar ubicaciones.",
+  "locations": [
+    {
+      "id": "madrid-centro",
+      "name": "Madrid Centro",
+      "lat": 40.4168,
+      "lon": -3.7038,
+      "zoom": 15,
+      "description": "Centro histórico de Madrid, alta densidad de calles"
+    },
+    {
+      "id": "barcelona-eixample",
+      "name": "Barcelona Eixample",
+      "lat": 41.3874,
+      "lon": 2.1686,
+      "zoom": 15,
+      "description": "Grid urbano denso de Barcelona"
+    },
+    {
+      "id": "valencia-ciudad",
+      "name": "Valencia Ciudad",
+      "lat": 39.4699,
+      "lon": -0.3763,
+      "zoom": 15,
+      "description": "Centro de Valencia, zona peatonal y turistica"
+    },
+    {
+      "id": "sevilla-centro",
+      "name": "Sevilla Centro",
+      "lat": 37.3891,
+      "lon": -5.9845,
+      "zoom": 15,
+      "description": "Casco antiguo de Sevilla, calles estrechas"
+    },
+    {
+      "id": "zaragoza-rio",
+      "name": "Zaragoza Ebro",
+      "lat": 41.6561,
+      "lon": -0.8773,
+      "zoom": 14,
+      "description": "Zaragoza junto al rio Ebro, zona de parques"
+    },
+    {
+      "id": "bilbao-ensanche",
+      "name": "Bilbao Ensanche",
+      "lat": 43.2627,
+      "lon": -2.9253,
+      "zoom": 15,
+      "description": "Ensanche de Bilbao, avenidas anchas"
+    },
+    {
+      "id": "granada-albaicin",
+      "name": "Granada Albaicin",
+      "lat": 37.1773,
+      "lon": -3.5986,
+      "zoom": 16,
+      "description": "Albaicin de Granada, calles empinadas y estrechas"
+    },
+    {
+      "id": "madrid-retiro",
+      "name": "Madrid Retiro",
+      "lat": 40.4153,
+      "lon": -3.6844,
+      "zoom": 15,
+      "description": "Parque del Retiro, zona verde urbana"
+    },
+    {
+      "id": "malaga-puerto",
+      "name": "Malaga Puerto",
+      "lat": 36.7213,
+      "lon": -4.4214,
+      "zoom": 15,
+      "description": "Puerto y zona maritima de Malaga"
+    },
+    {
+      "id": "alicante-casco",
+      "name": "Alicante Casco Antiguo",
+      "lat": 38.3452,
+      "lon": -0.4810,
+      "zoom": 16,
+      "description": "Casco antiguo de Alicante, junto al castillo"
+    }
+  ],
+  "settings": {
+    "outputDir": "previews",
+    "screenshotDelay": 5,
+    "packageName": "net.osmand",
+    "renderingPath": "/sdcard/Android/data/net.osmand/files/rendering",
+    "mapPath": "/sdcard/Android/data/net.osmand/files",
+    "obfFile": "Spain_europe.obf"
+  }
+}
