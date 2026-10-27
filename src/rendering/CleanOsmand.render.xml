@@ -1891,8 +1891,8 @@
 			<case minzoom="15" tag="amenity" value="place_of_worship"/>
 			<case minzoom="13" tag="amenity" value="monastery"/>
 			<case minzoom="13" tag="historic" value="monastery"/>
-			<apply color="#f7edd2" color_2="#d9b677" strokeWidth_2="2">
-				<apply_if nightMode="true" color="#685d20" color_2="#d9bd21"/>
+			<apply color="#f7edd2">
+				<apply_if nightMode="true" color="#685d20"/>
 			</apply>
 		</switch>
 
@@ -1994,7 +1994,7 @@
 				<case minzoom="7" tag="landuse" value="reservoir"/>
 				<case minzoom="7" tag="landuse" value="water"/>
 				<case minzoom="10" tag="landuse" value="basin"/>
-				<case minzoom="15" tag="leisure" value="swimming_pool" color_2="#7479ec" strokeWidth_2=":1"/>
+				<case minzoom="15" tag="leisure" value="swimming_pool"/>
 				<apply color="$waterColorDay" color_0="$waterColorDay">
 					<apply_if nightMode="true" color="$waterColorNight" color_0="$waterColorNight"/>
 				</apply>
