@@ -24,7 +24,7 @@
          "type":"FILE",
          "pluginId":"cleanosmand.style",
          "subtype" : "rendering_style",
-         "file":"\\/rendering\\/CleanOsmand.render.xml"
+         "file":"rendering/CleanOsmand.render.xml"
       }
    ]
 }
