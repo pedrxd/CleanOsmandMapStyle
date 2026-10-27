@@ -50,22 +50,24 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const fs = require('fs');
             const version = '${{ steps.version.outputs.version }}';
             const runUrl = '${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}';
+            const artifactName = 'CleanOsmand-' + version + '.osf';
 
-            const body = `## 🧪 OSF de prueba generado
-
-**Versión:** \`${version}\`
-
-### Descargar
-1. Ve a la pestaña [Actions](${runUrl}) de este run
-2. Descarga el artifact \`CleanOsmand-${version}.osf\`
-3. Instálalo en OsmAnd para probar los cambios
-
-### Instalación
-1. Abre el \`.osf\` con OsmAnd, o impórtalo desde Menú → Ajustes → Importar
-2. Selecciona "CleanOsmand" en Configurar mapa → Estilo de mapa`;
+            const body = [
+              '## OSF de prueba generado',
+              '',
+              '**Version:** `' + version + '`',
+              '',
+              '### Descargar',
+              '1. Ve a la pestana [Actions](' + runUrl + ') de este run',
+              '2. Descarga el artifact `' + artifactName + '`',
+              '3. Instalalo en OsmAnd para probar los cambios',
+              '',
+              '### Instalacion',
+              '1. Abre el `.osf` con OsmAnd, o importalo desde Menu -> Ajustes -> Importar',
+              '2. Selecciona "CleanOsmand" en Configurar mapa -> Estilo de mapa'
+            ].join('\n');
 
             await github.rest.issues.createComment({
               issue_number: context.issue.number,
@@ -78,6 +80,6 @@ jobs:
         run: |
           echo "## OSF generado" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "- **Versión:** \`${{ steps.version.outputs.version }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Version:** \`${{ steps.version.outputs.version }}\`" >> "$GITHUB_STEP_SUMMARY"
           echo "- **Archivo:** \`dist/CleanOsmand-${{ steps.version.outputs.version }}.osf\`" >> "$GITHUB_STEP_SUMMARY"
           echo "- **Rama:** \`${{ github.ref_name }}\`" >> "$GITHUB_STEP_SUMMARY"
