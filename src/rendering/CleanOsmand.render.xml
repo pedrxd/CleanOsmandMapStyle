@@ -247,15 +247,6 @@
 	<renderingConstant name="trackDayColor" value="#A18D67"/>
 	<renderingConstant name="trackNightColor" value="#7F6E4C"/>
 
-	<renderingAttribute name="mainHighwayOnewayArrowsColor">
-		<case attrColorValue="#ffffff"/>
-	</renderingAttribute>
-	<renderingAttribute name="trackPathHighwayOnewayArrowsColor">
-		<case attrColorValue="#999999">
-			<apply_if nightMode="true" attrColorValue="#dddddd"/>
-		</case>
-	</renderingAttribute>
-
 	<renderingAttribute name="nonMotoVehicleRoadColor">
 		<case nightMode="true" attrColorValue="#343434"/>
 		<case attrColorValue="#C1C1C1"/>
@@ -1848,8 +1839,6 @@
 					</apply>
 				</switch>
 				<apply_if additional="construction=yes" pathEffect="8_4" cap="BUTT"/>
-				<apply_if additional="oneway=yes" pathIcon="oneway_white_gray_big" pathIconStep="70"/>
-				<apply_if additional="oneway=-1" pathIcon="oneway_reverse_white_gray_big" pathIconStep="70"/>
 			</switch>
 
 			<switch minzoom="10">
@@ -1880,12 +1869,7 @@
 					<apply_if nightMode="true" color_0="$bridgeNightColor"/>
 				</apply_if>
 				<apply_if additional="construction=yes" pathEffect="8_4" cap="BUTT"/>
-				<apply_if minzoom="16"> <!-- for new OpenGL engine only -->
-					<apply_if maxzoom="16" additional="oneway=yes" pathIcon="oneway_white_gray" pathIconStep="70"/>
-					<apply_if minzoom="17" additional="oneway=yes" pathIcon="oneway_white_gray_big" pathIconStep="70"/>
-					<apply_if maxzoom="16" additional="oneway=-1" pathIcon="oneway_reverse_white_gray" pathIconStep="70"/>
-					<apply_if minzoom="17" additional="oneway=-1" pathIcon="oneway_reverse_white_gray_big" pathIconStep="70"/>
-				</apply_if>
+
 			</switch>
 
 			<switch>
@@ -1927,12 +1911,7 @@
 						<apply color="$accessNoColor" pathEffect="6_1.5" cap="BUTT"/>
 					</switch>
 				</apply_if>
-				<apply_if minzoom="16"> <!-- for new OpenGL engine only -->
-					<apply_if maxzoom="16" additional="oneway=yes" pathIcon="oneway_white_gray" pathIconStep="70"/>
-					<apply_if minzoom="17" additional="oneway=yes" pathIcon="oneway_white_gray_big" pathIconStep="70"/>
-					<apply_if maxzoom="16" additional="oneway=-1" pathIcon="oneway_reverse_white_gray" pathIconStep="70"/>
-					<apply_if minzoom="17" additional="oneway=-1" pathIcon="oneway_reverse_white_gray_big" pathIconStep="70"/>
-				</apply_if>
+
 			</switch>
 
 			<switch>
@@ -2006,10 +1985,7 @@
 						<apply color="$accessNoColor" pathEffect="4_1" cap="BUTT"/>
 					</switch>
 				</apply_if>
-				<apply_if minzoom="16"> <!-- for new OpenGL engine only -->
-					<apply_if additional="oneway=yes" pathIcon="oneway_white_gray" pathIconStep="70"/>
-					<apply additional="oneway=-1" pathIcon="oneway_reverse_white_gray" pathIconStep="70"/>
-				</apply_if>
+
 			</switch>
 			<apply>
 				<switch>
@@ -2031,7 +2007,6 @@
 					</apply_if>
 				</switch>
 			</apply>
-			<apply onewayArrowsColor="$mainHighwayOnewayArrowsColor"/>
 		</switch>
 
 		<switch>
@@ -2044,7 +2019,6 @@
 				<case maxzoom="17" strokeWidth="3" pathEffect="11_5.5"/>
 				<case minzoom="18" strokeWidth="5" pathEffect="15_7.5"/>
 			</case>
-			<apply onewayArrowsColor="$trackPathHighwayOnewayArrowsColor"/>
 			<apply_if hideWoodScrubs="false" color="$trackDayColor"/>
 			<apply_if nightMode="true" color="$trackNightColor" shadowRadius="0"/>
 			<apply_if additional="bridge=yes" minzoom="15" color__1="#333333" color_0="#ffffff">
@@ -2068,10 +2042,6 @@
 			</apply>
 			<apply_if hideAccess="false" additional="access=no" disable="true"/>
 			<apply_if hideAccess="false" additional="access=private" disable="true"/>
-			<apply_if minzoom="16"> <!-- for new OpenGL engine only -->
-				<apply_if additional="oneway=yes" pathIcon="oneway_white_gray" pathIconStep="70"/>
-				<apply additional="oneway=-1" pathIcon="oneway_reverse_white_gray" pathIconStep="70"/>
-			</apply_if>
 		</switch>
 
 		<switch hideNonVehicleHighways="false">
@@ -2088,7 +2058,6 @@
 						<case minzoom="18" strokeWidth="17"/>
 					</apply_if>
 				</apply>
-				<apply onewayArrowsColor="$mainHighwayOnewayArrowsColor"/>
 				<apply_if additional="tunnel=yes" pathEffect="4_4" cap="BUTT"/>
 				<apply_if additional="covered=yes" pathEffect="4_4" cap="BUTT"/>
 				<apply_if additional="bridge=yes" minzoom="14" color_0="$bridgeDayColor" cap="SQUARE" cap_0="BUTT">
@@ -2170,15 +2139,10 @@
 					</switch>
 				</apply>
 				<apply color="$nonMotoVehicleRoadColor"/>
-				<apply onewayArrowsColor="$trackPathHighwayOnewayArrowsColor"/>
 				<apply_if hideAccess="false" additional="access=no" disable="true"/>
 				<apply_if hideAccess="false" additional="access=private" disable="true"/>
 			</switch>
 			<apply_if noPolygons="true" shadowRadius=":1" shadowColor="#999999"/>
-			<apply_if minzoom="16"> <!-- for new OpenGL engine only -->
-				<apply_if additional="oneway=yes" pathIcon="oneway_white_gray" pathIconStep="70"/>
-				<apply additional="oneway=-1" pathIcon="oneway_reverse_white_gray" pathIconStep="70"/>
-			</apply_if>
 		</switch>
 
 		<switch>

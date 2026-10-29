@@ -8,7 +8,6 @@ Estilo de renderizado minimalista y limpio para OsmAnd. Es autónomo (no depende
 - Calles en escala de grises: a mayor importancia de la vía, color más oscuro.
 - Anchos de trazo progresivos según nivel de vía y zoom.
 - Vías sin asfaltar en trazo discontinuo color tostado (#b39d72).
-- Flechas de sentido único en blanco con borde gris para mejor visibilidad.
 - Nombres de calle escalonados: las vías importantes muestran nombre antes.
 - Edificios completamente ocultos (sin relleno ni contorno).
 - POIs mínimos y sin vías no motorizadas (aceras, ciclovías, senderos, escaleras, pasos de peatones).
@@ -24,7 +23,7 @@ Descarga la última release desde [Releases](https://github.com/pedrxd/CleanOsma
 
 1. Descarga `CleanOsmand-vx.y.z.osf`
 2. Ábrelo con OsmAnd (o impórtalo desde Menú → Ajustes → Importar/Exportar → Importar desde archivo)
-3. OsmAnd instalará automáticamente el estilo y los recursos (iconos de flechas personalizados)
+3. OsmAnd instalará automáticamente el estilo y los recursos
 4. En Configurar mapa, elige CleanOsmand como estilo de mapa
 
 Importante: mantén desactivada la opción "Hide polygons (exc. buildings)" / "Ocultar polígonos (exc. edificios)" en los ajustes del estilo; si se activa, parques, agua y usos de suelo se vuelven transparentes.
