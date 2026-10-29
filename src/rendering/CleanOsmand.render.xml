@@ -1806,19 +1806,19 @@
 					<case tag="highway" value="secondary" color="$secondaryRoadColor"/>
 					<apply cap="ROUND">
 						<case>
-							<case maxzoom="16" strokeWidth="7:7"/>
-							<case maxzoom="17" strokeWidth="8.5:8.5"/>
-							<case maxzoom="18" strokeWidth="10:10"/>
-							<case minzoom="19" strokeWidth="11.5:11.5"/>
+							<case maxzoom="16" strokeWidth="7.5:7.5"/>
+							<case maxzoom="17" strokeWidth="9:9"/>
+							<case maxzoom="18" strokeWidth="11:11"/>
+							<case minzoom="19" strokeWidth="13:13"/>
 						</case>
 						<apply_if additional="tunnel=yes" pathEffect="4_4" cap="BUTT"/>
 						<apply_if additional="covered=yes" pathEffect="4_4" cap="BUTT"/>
 						<!-- Bridges -->
 						<apply_if additional="bridge=yes" color_0="$bridgeDayColor" shadowRadius=":0" cap="SQUARE" cap_0="BUTT">
-							<case maxzoom="16" strokeWidth_0="8.5:10"/>
-							<case maxzoom="17" strokeWidth_0="10:11"/>
-							<case maxzoom="18" strokeWidth_0="12.5:14.5"/>
-							<case minzoom="19" strokeWidth_0="13.5:15.5"/>
+							<case maxzoom="16" strokeWidth_0="9:11"/>
+							<case maxzoom="17" strokeWidth_0="11:12.5"/>
+							<case maxzoom="18" strokeWidth_0="13.5:16"/>
+							<case minzoom="19" strokeWidth_0="15:17.5"/>
 							<apply_if nightMode="true" color_0="$bridgeNightColor"/>
 						</apply_if>
 					</apply>
@@ -1830,19 +1830,19 @@
 					<case tag="highway" value="secondary_link" color="$secondaryRoadColor"/>
 					<apply cap="ROUND">
 						<case>
-							<case maxzoom="16" strokeWidth="5.3:5.3"/>
-							<case maxzoom="17" strokeWidth="6.3:6.3"/>
-							<case maxzoom="18" strokeWidth="7.8:7.8"/>
-							<case minzoom="19" strokeWidth="8.7:8.7"/>
+							<case maxzoom="16" strokeWidth="5.7:5.7"/>
+							<case maxzoom="17" strokeWidth="6.8:6.8"/>
+							<case maxzoom="18" strokeWidth="8.5:8.5"/>
+							<case minzoom="19" strokeWidth="9.5:9.5"/>
 						</case>
 						<apply_if additional="tunnel=yes" pathEffect="4_4" cap="BUTT"/>
 						<apply_if additional="covered=yes" pathEffect="4_4" cap="BUTT"/>
 						<!-- Bridges -->
 						<apply_if additional="bridge=yes" color_0="$bridgeDayColor" shadowRadius=":0" cap="SQUARE" cap_0="BUTT">
-							<case maxzoom="16" strokeWidth_0="7.3:7.3"/>
-							<case maxzoom="17" strokeWidth_0="8:8"/>
-							<case maxzoom="18" strokeWidth_0="10:10"/>
-							<case minzoom="19" strokeWidth_0="11:11"/>
+							<case maxzoom="16" strokeWidth_0="7.8:7.8"/>
+							<case maxzoom="17" strokeWidth_0="8.7:8.7"/>
+							<case maxzoom="18" strokeWidth_0="11:11"/>
+							<case minzoom="19" strokeWidth_0="12:12"/>
 							<apply_if nightMode="true" color_0="$bridgeNightColor"/>
 						</apply_if>
 					</apply>
