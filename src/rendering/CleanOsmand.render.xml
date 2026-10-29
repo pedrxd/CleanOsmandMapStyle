@@ -1423,7 +1423,12 @@
 				<case minzoom="13" tag="landuse" value="water" nameTag="" textSize="12" textWrapWidth="20" textOrder="218"/>
 				<case minzoom="13" tag="landuse" value="reservoir" nameTag="" textSize="12" textWrapWidth="20" textOrder="218"/>
 				<case minzoom="13" tag="landuse" value="basin" nameTag="" textSize="12" textWrapWidth="20" textOrder="218"/>
-				<case minzoom="17" tag="leisure" value="swimming_pool" nameTag="" textSize="12" textWrapWidth="20" textOrder="218"/>
+				<case minzoom="17" tag="leisure" value="swimming_pool" nameTag="" textSize="12" textWrapWidth="20" textOrder="218">
+					<apply_if additional="access=private" disable="true"/>
+					<apply_if additional="access=no" disable="true"/>
+					<apply_if additional="indoor=yes" disable="true"/>
+					<apply_if additional="location=indoor" disable="true"/>
+				</case>
 
 				<case minzoom="14" tag="leisure" value="marina" nameTag="" textSize="12" textColor="#0000ff" textWrapWidth="30"/>
 				<apply_if nightMode="true" textColor="#90e4ff" textHaloColor="#aa003153" textHaloRadius="$textHaloRadiusNight"/>
@@ -1994,7 +1999,12 @@
 				<case minzoom="7" tag="landuse" value="reservoir"/>
 				<case minzoom="7" tag="landuse" value="water"/>
 				<case minzoom="10" tag="landuse" value="basin"/>
-				<case minzoom="15" tag="leisure" value="swimming_pool"/>
+				<case minzoom="15" tag="leisure" value="swimming_pool">
+					<apply_if additional="access=private" disable="true"/>
+					<apply_if additional="access=no" disable="true"/>
+					<apply_if additional="indoor=yes" disable="true"/>
+					<apply_if additional="location=indoor" disable="true"/>
+				</case>
 				<apply color="$waterColorDay" color_0="$waterColorDay">
 					<apply_if nightMode="true" color="$waterColorNight" color_0="$waterColorNight"/>
 				</apply>
