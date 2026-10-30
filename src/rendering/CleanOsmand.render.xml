@@ -2015,9 +2015,9 @@
 				<case maxzoom="15" strokeWidth="1.1"/>
 				<case maxzoom="16" strokeWidth="1.8"/>
 				<case maxzoom="17" strokeWidth="2.5"/>
-				<case maxzoom="18" strokeWidth="3.5"/>
-				<case maxzoom="19" strokeWidth="5"/>
-				<case minzoom="20" strokeWidth="6"/>
+				<case maxzoom="18" strokeWidth="4"/>
+				<case maxzoom="19" strokeWidth="6.5"/>
+				<case minzoom="20" strokeWidth="8"/>
 			</case>
 			<apply_if hideWoodScrubs="false" color="$trackDayColor"/>
 			<apply_if nightMode="true" color="$trackNightColor" shadowRadius="0"/>
