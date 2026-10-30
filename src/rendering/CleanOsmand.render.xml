@@ -1397,15 +1397,15 @@
 				<case minzoom="5" tag="place" value="sea" nameTag="" textSize="12" textWrapWidth="20" textOrder="33"/>
 				<case minzoom="6" tag="natural" value="water" nameTag="" textSize="12" textWrapWidth="20" textOrder="178"/>
 				<case minzoom="8" tag="natural" value="bay" nameTag="" textSize="12" textWrapWidth="17" textOrder="179"/>
-				<case minzoom="13" tag="waterway" value="stream" nameTag="" textSize="12" textOnPath="true" textOrder="206"/>
-				<case minzoom="13" tag="waterway" value="wadi" nameTag="" textSize="12" textOnPath="true" textOrder="213"/>
+				<case minzoom="15" tag="waterway" value="stream" nameTag="" textSize="12" textOnPath="true" textOrder="206"/>
+				<case minzoom="16" tag="waterway" value="wadi" nameTag="" textSize="12" textOnPath="true" textOrder="213"/>
 				<case minzoom="11" tag="waterway" value="river" nameTag="" textSize="12" textOnPath="true" textMinDistance="80" textOrder="184"/>
 				<case minzoom="13" tag="waterway" value="canal" nameTag="" textSize="12" textOnPath="true" textMinDistance="80" textOrder="185"/>
 				<case minzoom="14" tag="lock" value="yes" nameTag="lock_name" nameTag2="lock_ref" textOnPath="true" textMinDistance="80" textOrder="184"/>
 				<case minzoom="15" tag="waterway" value="dam" nameTag="" textSize="12" textWrapWidth="20" textOnPath="true" textOrder="207"/>
 				<case minzoom="15" tag="waterway" value="dock" nameTag="" textSize="12" textOnPath="true" textOrder="209"/>
-				<case minzoom="15" tag="waterway" value="ditch" nameTag="" textSize="12" textOnPath="true" textOrder="210"/>
-				<case minzoom="15" tag="waterway" value="drain" nameTag="" textSize="12" textOnPath="true" textOrder="211"/>
+				<case minzoom="16" tag="waterway" value="ditch" nameTag="" textSize="12" textOnPath="true" textOrder="210"/>
+				<case minzoom="16" tag="waterway" value="drain" nameTag="" textSize="12" textOnPath="true" textOrder="211"/>
 				<case minzoom="16" tag="natural" value="spring" nameTag="" textSize="12" textDy="7" textWrapWidth="20" textOrder="214"/>
 
 				<case minzoom="13" tag="landuse" value="water" nameTag="" textSize="12" textWrapWidth="20" textOrder="218"/>
@@ -2010,13 +2010,14 @@
 		</switch>
 
 		<switch>
-			<case minzoom="13" tag="highway" value="track" color="#C2AC8B">
-				<case maxzoom="13" strokeWidth="0.8"/>
-				<case maxzoom="14" strokeWidth="1.4"/>
-				<case maxzoom="15" strokeWidth="2"/>
-				<case maxzoom="16" strokeWidth="2.5"/>
-				<case maxzoom="17" strokeWidth="3"/>
-				<case minzoom="18" strokeWidth="5"/>
+			<case minzoom="14" tag="highway" value="track" color="#C2AC8B">
+				<case maxzoom="14" strokeWidth="0.5"/>
+				<case maxzoom="15" strokeWidth="0.8"/>
+				<case maxzoom="16" strokeWidth="1.2"/>
+				<case maxzoom="17" strokeWidth="1.8"/>
+				<case maxzoom="18" strokeWidth="2.5"/>
+				<case maxzoom="19" strokeWidth="3.5"/>
+				<case minzoom="20" strokeWidth="5"/>
 			</case>
 			<apply_if hideWoodScrubs="false" color="$trackDayColor"/>
 			<apply_if nightMode="true" color="$trackNightColor" shadowRadius="0"/>
@@ -2172,28 +2173,28 @@
 		</switch>
 
 		<switch>
-			<switch minzoom="12" tag="waterway" value="stream">
-				<case maxzoom="12" strokeWidth="1"/>
-				<case maxzoom="13" strokeWidth="1.3"/>
-				<case maxzoom="14" strokeWidth="1.8"/>
-				<case maxzoom="16" strokeWidth="2.3"/>
-				<case maxzoom="17" strokeWidth="2.7"/>
-				<case minzoom="18" strokeWidth="4"/>
-				<apply minzoom="15" pathIcon="arrow_blue_big">
-					<case maxzoom="13" pathIconStep="130"/>
-					<case maxzoom="14" pathIconStep="140"/>
-					<case minzoom="15" pathIconStep="150"/>
+			<switch minzoom="15" tag="waterway" value="stream">
+				<case maxzoom="15" strokeWidth="1"/>
+				<case maxzoom="16" strokeWidth="1.3"/>
+				<case maxzoom="17" strokeWidth="1.8"/>
+				<case maxzoom="18" strokeWidth="2.3"/>
+				<case maxzoom="19" strokeWidth="2.7"/>
+				<case minzoom="20" strokeWidth="4"/>
+				<apply minzoom="16" pathIcon="arrow_blue_big">
+					<case maxzoom="16" pathIconStep="130"/>
+					<case maxzoom="17" pathIconStep="140"/>
+					<case minzoom="18" pathIconStep="150"/>
 					<apply_if additional="intermittent=yes" pathIconStep="190"/>
 				</apply>
 			</switch>
-			<switch minzoom="13" tag="waterway" value="wadi">
-				<case maxzoom="13" strokeWidth="1.3" pathEffect="4.5_3"/>
-				<case maxzoom="14" strokeWidth="1.8" pathEffect="6_4"/>
-				<case maxzoom="16" strokeWidth="2.3" pathEffect="8_5"/>
-				<case maxzoom="17" strokeWidth="2.7" pathEffect="9_5.5"/>
-				<case minzoom="18" strokeWidth="4" pathEffect="12_7"/>
+			<switch minzoom="16" tag="waterway" value="wadi">
+				<case maxzoom="16" strokeWidth="1.3" pathEffect="4.5_3"/>
+				<case maxzoom="17" strokeWidth="1.8" pathEffect="6_4"/>
+				<case maxzoom="18" strokeWidth="2.3" pathEffect="8_5"/>
+				<case maxzoom="19" strokeWidth="2.7" pathEffect="9_5.5"/>
+				<case minzoom="20" strokeWidth="4" pathEffect="12_7"/>
 			</switch>
-			<switch minzoom="5">
+			<switch minzoom="10">
 				<switch>
 					<case tag="waterway" value="river"/>
 					<case tag="lock" value="yes" additional="osmand_lock_river=yes"/>
@@ -2211,8 +2212,9 @@
 						<apply_if additional="intermittent=yes" pathIconStep="190"/>
 					</apply>
 				</switch>
+				<apply_if additional="intermittent=yes" maxzoom="14" disable="true"/>
 				<apply pathEffect_2="4_2">
-					<case maxzoom="9" strokeWidth="1"/>
+					<case maxzoom="10" strokeWidth="1.2"/>
 					<case maxzoom="12" strokeWidth="2"/>
 					<case maxzoom="13" strokeWidth="3"/>
 					<case maxzoom="14" strokeWidth="5"/>
@@ -2221,15 +2223,15 @@
 					<case minzoom="18" strokeWidth="12"/>
 				</apply>
 			</switch>
-			<switch minzoom="13">
+			<switch minzoom="16">
 				<case tag="waterway" value="ditch"/>
 				<case tag="waterway" value="drain"/>
 				<apply>
-					<case maxzoom="13" strokeWidth="0.8"/>
-					<case maxzoom="14" strokeWidth="1.1"/>
-					<case maxzoom="16" strokeWidth="1.4"/>
-					<case maxzoom="17" strokeWidth="1.7"/>
-					<case minzoom="18" strokeWidth="2.3"/>
+					<case maxzoom="16" strokeWidth="0.8"/>
+					<case maxzoom="17" strokeWidth="1.1"/>
+					<case maxzoom="18" strokeWidth="1.4"/>
+					<case maxzoom="19" strokeWidth="1.7"/>
+					<case minzoom="20" strokeWidth="2.3"/>
 				</apply>
 			</switch>
 			<apply color="$waterColorDay" color_2="#ffffff">
