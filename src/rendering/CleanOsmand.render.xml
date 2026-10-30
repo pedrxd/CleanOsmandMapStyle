@@ -244,8 +244,8 @@
 		<case nightMode="true" attrColorValue="#7F6E4C"/>
 		<case attrColorValue="#A18D67"/>
 	</renderingAttribute>
-	<renderingConstant name="trackDayColor" value="#A18D67"/>
-	<renderingConstant name="trackNightColor" value="#7F6E4C"/>
+	<renderingConstant name="trackDayColor" value="#B7A37E"/>
+	<renderingConstant name="trackNightColor" value="#8D7B58"/>
 
 	<renderingAttribute name="nonMotoVehicleRoadColor">
 		<case nightMode="true" attrColorValue="#343434"/>
@@ -2010,14 +2010,14 @@
 		</switch>
 
 		<switch>
-			<case minzoom="12" tag="highway" value="track" color="#b39d72" pathEffect="4_2">
-				<case moreDetailed="true" maxzoom="12" strokeWidth="0.4" pathEffect="3_1.5"/>
-				<case maxzoom="13" strokeWidth="0.8" pathEffect="4_2"/>
-				<case maxzoom="14" strokeWidth="1.4" pathEffect="5_2.5"/>
-				<case maxzoom="15" strokeWidth="2" pathEffect="7_3.5"/>
-				<case maxzoom="16" strokeWidth="2.5" pathEffect="8_4"/>
-				<case maxzoom="17" strokeWidth="3" pathEffect="11_5.5"/>
-				<case minzoom="18" strokeWidth="5" pathEffect="15_7.5"/>
+			<case minzoom="12" tag="highway" value="track" color="#C2AC8B">
+				<case moreDetailed="true" maxzoom="12" strokeWidth="0.4"/>
+				<case maxzoom="13" strokeWidth="0.8"/>
+				<case maxzoom="14" strokeWidth="1.4"/>
+				<case maxzoom="15" strokeWidth="2"/>
+				<case maxzoom="16" strokeWidth="2.5"/>
+				<case maxzoom="17" strokeWidth="3"/>
+				<case minzoom="18" strokeWidth="5"/>
 			</case>
 			<apply_if hideWoodScrubs="false" color="$trackDayColor"/>
 			<apply_if nightMode="true" color="$trackNightColor" shadowRadius="0"/>
