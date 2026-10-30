@@ -1688,19 +1688,18 @@
 		</case>
 
 		<switch>
-			<switch minzoom="6" maxzoom="15">
+			<switch minzoom="7" maxzoom="15">
 				<case tag="highway" value="motorway" color="$motorwayRoadColor"/>
 				<case tag="highway" value="trunk" color="$trunkRoadColor"/>
 				<apply cap="ROUND">
-					<case maxzoom="6" strokeWidth="1:1"/>
+					<case maxzoom="7" strokeWidth="1:1"/>
 					<case maxzoom="8" strokeWidth="1.5:1.5"/>
 				</apply>
 			</switch>
-			<switch minzoom="6" maxzoom="15">
+			<switch minzoom="8" maxzoom="15">
 				<case tag="highway" value="primary" color="$primaryRoadColor"/>
 				<apply cap="ROUND">
-					<case maxzoom="6" strokeWidth="0.5"/>
-					<case maxzoom="8" strokeWidth="1:1"/>
+					<case maxzoom="8" strokeWidth="0.5"/>
 				</apply>
 			</switch>
 			<switch minzoom="9" maxzoom="15">
@@ -2160,12 +2159,13 @@
 				</apply>
 			</switch>
 
-			<switch minzoom="4">
+			<switch minzoom="6">
 				<case tag="admin_level" value="3" pathEffect="6_1"/>
 				<case tag="admin_level" value="4" pathEffect="6_1"/>
 				<apply color="$boundaryColorOuter" color_0="$boundaryColorInner"/>
 				<apply>
-					<case maxzoom="5" strokeWidth="1" strokeWidth_0="0.5"/>
+					<case maxzoom="6" strokeWidth="1" strokeWidth_0="0.5"/>
+					<case maxzoom="7" strokeWidth="2" strokeWidth_0="0.7"/>
 					<case maxzoom="8" strokeWidth="4" strokeWidth_0="1"/>
 					<case minzoom="9" strokeWidth="7" strokeWidth_0="2"/>
 				</apply>
