@@ -907,10 +907,12 @@
 
 				<switch>
 					<switch minzoom="14">
-						<case tag="highway" value="track" nameTag="" textOrder="188"/>
 						<case tag="highway" value="cycleway" nameTag="" textOrder="196"/>
 						<case tag="highway" value="path" nameTag="" textOrder="193"/>
 						<case tag="highway" value="bridleway" nameTag="" textOrder="195"/>
+					</switch>
+					<switch minzoom="15">
+						<case tag="highway" value="track" nameTag="" textOrder="188"/>
 					</switch>
 					<switch nameTag="" minzoom="14">
 						<case minzoom="16" tag="area:highway" nameTag="" value="track" textWrapWidth="25" textOrder="189"/>
@@ -2023,14 +2025,14 @@
 		</switch>
 
 		<switch>
-			<case minzoom="14" tag="highway" value="track" color="#C2AC8B">
-				<case maxzoom="14" strokeWidth="0.7"/>
-				<case maxzoom="15" strokeWidth="1.1"/>
-				<case maxzoom="16" strokeWidth="1.8"/>
-				<case maxzoom="17" strokeWidth="2.5"/>
-				<case maxzoom="18" strokeWidth="4"/>
-				<case maxzoom="19" strokeWidth="6.5"/>
-				<case minzoom="20" strokeWidth="8"/>
+			<case minzoom="15" tag="highway" value="track" color="#C2AC8B">
+				<case maxzoom="15" strokeWidth="0.7"/>
+				<case maxzoom="16" strokeWidth="1.1"/>
+				<case maxzoom="17" strokeWidth="1.8"/>
+				<case maxzoom="18" strokeWidth="2.5"/>
+				<case maxzoom="19" strokeWidth="4"/>
+				<case maxzoom="20" strokeWidth="6.5"/>
+				<case minzoom="21" strokeWidth="8"/>
 			</case>
 			<apply_if hideWoodScrubs="false" color="$trackDayColor"/>
 			<apply_if nightMode="true" color="$trackNightColor" shadowRadius="0"/>
