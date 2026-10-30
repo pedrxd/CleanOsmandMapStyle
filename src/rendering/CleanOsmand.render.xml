@@ -2010,7 +2010,8 @@
 		</switch>
 
 		<switch>
-			<case minzoom="12" tag="highway" value="track" color="#C2AC8B">
+			<case minzoom="10" tag="highway" value="track" color="#C2AC8B">
+				<case maxzoom="11" strokeWidth="0.4"/>
 				<case moreDetailed="true" maxzoom="12" strokeWidth="0.4"/>
 				<case maxzoom="13" strokeWidth="0.8"/>
 				<case maxzoom="14" strokeWidth="1.4"/>
