@@ -1445,6 +1445,27 @@
 		</switch>
 	</text>
 
+	<point>
+		<switch>
+			<case minzoom="5" tag="place" value="city"/>
+			<case minzoom="8" tag="place" value="town"/>
+			<case minzoom="11" tag="place" value="village"/>
+			<case minzoom="12" tag="place" value="hamlet"/>
+			<case minzoom="12" tag="place" value="farm"/>
+			<case minzoom="11" maxzoom="17" tag="place" value="suburb"/>
+			<case minzoom="12" tag="place" value="borough"/>
+			<case minzoom="13" tag="place" value="neighbourhood"/>
+			<case minzoom="13" tag="place" value="quarter"/>
+			<case minzoom="14" tag="place" value="city_block"/>
+			<case minzoom="13" tag="place" value="allotments"/>
+			<case minzoom="13" tag="place" value="isolated_dwelling"/>
+			<case minzoom="13" tag="place" value="locality"/>
+			<case minzoom="5" tag="place" value="island"/>
+			<case minzoom="5" tag="place" value="atoll"/>
+			<case minzoom="13" tag="place" value="islet"/>
+		</switch>
+	</point>
+
 
 	<polygon>
 		<switch hideBuildings="false">
