@@ -1394,6 +1394,38 @@
 			<switch textColor="#2375aa" textHaloColor="#ddf1fd" textHaloRadius="$textHaloRadiusDay">
 				<case minzoom="2" tag="place" value="ocean" nameTag="" textSize="12" textWrapWidth="20" textOrder="3"/>
 				<case minzoom="5" tag="place" value="sea" nameTag="" textSize="12" textWrapWidth="20" textOrder="33"/>
+				<!-- natural=water: nada antes de z12; por area, primero los mas grandes y luego los mas pequenos -->
+				<switch nameTag="" textSize="12" textWrapWidth="20" textOrder="178">
+					<case minzoom="12" tag="natural" value="water" additional="area_rounded=1048576000"/>
+					<case minzoom="12" tag="natural" value="water" additional="area_rounded=524288000"/>
+					<case minzoom="12" tag="natural" value="water" additional="area_rounded=262144000"/>
+					<case minzoom="12" tag="natural" value="water" additional="area_rounded=131072000"/>
+					<case minzoom="12" tag="natural" value="water" additional="area_rounded=65536000"/>
+					<case minzoom="12" tag="natural" value="water" additional="area_rounded=32768000"/>
+					<case minzoom="12" tag="natural" value="water" additional="area_rounded=16384000"/>
+					<case minzoom="12" tag="natural" value="water" additional="area_rounded=8192000"/>
+					<case minzoom="12" tag="natural" value="water" additional="area_rounded=4096000"/>
+					<case minzoom="12" tag="natural" value="water" additional="area_rounded=2048000"/>
+					<case minzoom="13" tag="natural" value="water" additional="area_rounded=1024000"/>
+					<case minzoom="13" tag="natural" value="water" additional="area_rounded=512000"/>
+					<case minzoom="14" tag="natural" value="water" additional="area_rounded=256000"/>
+					<case minzoom="14" tag="natural" value="water" additional="area_rounded=128000"/>
+					<case minzoom="15" tag="natural" value="water" additional="area_rounded=64000"/>
+					<case minzoom="15" tag="natural" value="water" additional="area_rounded=32000"/>
+					<case minzoom="16" tag="natural" value="water" additional="area_rounded=16000"/>
+					<case minzoom="16" tag="natural" value="water" additional="area_rounded=8000"/>
+					<case minzoom="17" tag="natural" value="water"/>
+					<apply>
+						<apply_if additional="water=basin" maxzoom="16" disable="true"/>
+						<apply_if additional="water=pond" maxzoom="16" disable="true"/>
+						<apply_if additional="water=pit" maxzoom="16" disable="true"/>
+						<apply_if additional="water=oxbow" maxzoom="16" disable="true"/>
+						<apply_if additional="water=drain" maxzoom="16" disable="true"/>
+						<apply_if additional="water=ditch" maxzoom="16" disable="true"/>
+						<apply_if additional="amenity=fountain" maxzoom="16" disable="true"/>
+					</apply>
+				</switch>
+				<!-- agua pequena (water=basin/pond/pit/oxbow/drain/ditch) y fuentes: solo nombre desde z17 -->
 				<switch minzoom="17" nameTag="" textSize="12" textWrapWidth="20" textOrder="178">
 					<case tag="natural" value="water" additional="water=basin"/>
 					<case tag="natural" value="water" additional="water=pond"/>
@@ -1403,19 +1435,10 @@
 					<case tag="natural" value="water" additional="water=ditch"/>
 					<case tag="amenity" value="fountain"/>
 				</switch>
-				<case minzoom="6" tag="natural" value="water" nameTag="" textSize="12" textWrapWidth="20" textOrder="178">
-					<apply_if additional="water=basin" maxzoom="16" disable="true"/>
-					<apply_if additional="water=pond" maxzoom="16" disable="true"/>
-					<apply_if additional="water=pit" maxzoom="16" disable="true"/>
-					<apply_if additional="water=oxbow" maxzoom="16" disable="true"/>
-					<apply_if additional="water=drain" maxzoom="16" disable="true"/>
-					<apply_if additional="water=ditch" maxzoom="16" disable="true"/>
-					<apply_if additional="amenity=fountain" maxzoom="16" disable="true"/>
-				</case>
-				<case minzoom="8" tag="natural" value="bay" nameTag="" textSize="12" textWrapWidth="17" textOrder="179"/>
+				<case minzoom="12" tag="natural" value="bay" nameTag="" textSize="12" textWrapWidth="17" textOrder="179"/>
 				<case minzoom="15" tag="waterway" value="stream" nameTag="" textSize="12" textOnPath="true" textOrder="206"/>
 				<case minzoom="16" tag="waterway" value="wadi" nameTag="" textSize="12" textOnPath="true" textOrder="213"/>
-				<case minzoom="11" tag="waterway" value="river" nameTag="" textSize="12" textOnPath="true" textMinDistance="80" textOrder="184"/>
+				<case minzoom="12" tag="waterway" value="river" nameTag="" textSize="12" textOnPath="true" textMinDistance="80" textOrder="184"/>
 				<case minzoom="13" tag="waterway" value="canal" nameTag="" textSize="12" textOnPath="true" textMinDistance="80" textOrder="185"/>
 				<case minzoom="14" tag="lock" value="yes" nameTag="lock_name" nameTag2="lock_ref" textOnPath="true" textMinDistance="80" textOrder="184"/>
 				<case minzoom="15" tag="waterway" value="dam" nameTag="" textSize="12" textWrapWidth="20" textOnPath="true" textOrder="207"/>
