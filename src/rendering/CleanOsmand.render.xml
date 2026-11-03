@@ -1394,7 +1394,12 @@
 			<switch textColor="#2375aa" textHaloColor="#ddf1fd" textHaloRadius="$textHaloRadiusDay">
 				<case minzoom="2" tag="place" value="ocean" nameTag="" textSize="12" textWrapWidth="20" textOrder="3"/>
 				<case minzoom="5" tag="place" value="sea" nameTag="" textSize="12" textWrapWidth="20" textOrder="33"/>
-				<case minzoom="6" tag="natural" value="water" nameTag="" textSize="12" textWrapWidth="20" textOrder="178"/>
+				<case minzoom="17" tag="natural" value="water" additional="water=basin" nameTag="" textSize="12" textWrapWidth="20" textOrder="178"/>
+				<case minzoom="17" tag="amenity" value="fountain" nameTag="" textSize="12" textWrapWidth="20" textOrder="178"/>
+				<case minzoom="6" tag="natural" value="water" nameTag="" textSize="12" textWrapWidth="20" textOrder="178">
+					<apply_if additional="water=basin" maxzoom="16" disable="true"/>
+					<apply_if additional="amenity=fountain" maxzoom="16" disable="true"/>
+				</case>
 				<case minzoom="8" tag="natural" value="bay" nameTag="" textSize="12" textWrapWidth="17" textOrder="179"/>
 				<case minzoom="15" tag="waterway" value="stream" nameTag="" textSize="12" textOnPath="true" textOrder="206"/>
 				<case minzoom="16" tag="waterway" value="wadi" nameTag="" textSize="12" textOnPath="true" textOrder="213"/>
@@ -1462,6 +1467,8 @@
 			<case minzoom="5" tag="place" value="island"/>
 			<case minzoom="5" tag="place" value="atoll"/>
 			<case minzoom="13" tag="place" value="islet"/>
+			<case minzoom="17" tag="natural" value="water" additional="water=basin"/>
+			<case minzoom="17" tag="amenity" value="fountain"/>
 		</switch>
 	</point>
 
