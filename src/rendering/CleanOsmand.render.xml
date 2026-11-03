@@ -1932,8 +1932,8 @@
 				<case tag="highway" value="unclassified"/>
 				<apply color="$tertiaryRoadColor"/>
 				<apply_if cap="ROUND">
-					<case maxzoom="11" strokeWidth="1:1"/>
-					<case maxzoom="12" strokeWidth="1.4:1.4"/>
+					<case maxzoom="11" strokeWidth="0.8:0.8"/>
+					<case maxzoom="12" strokeWidth="1.2:1.2"/>
 					<case maxzoom="13" strokeWidth="2:2"/>
 					<case maxzoom="14" strokeWidth="2.7:2.7"/>
 					<case maxzoom="15" strokeWidth="3.8:3.8"/>
