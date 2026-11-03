@@ -1392,8 +1392,8 @@
 
 
 			<switch textColor="#2375aa" textHaloColor="#ddf1fd" textHaloRadius="$textHaloRadiusDay">
-				<case minzoom="2" tag="place" value="ocean" nameTag="" textSize="12" textWrapWidth="20" textOrder="3"/>
-				<case minzoom="5" tag="place" value="sea" nameTag="" textSize="12" textWrapWidth="20" textOrder="33"/>
+				<case minzoom="1" tag="place" value="ocean" nameTag="" textSize="12" textWrapWidth="20" textOrder="3"/>
+				<case minzoom="1" tag="place" value="sea" nameTag="" textSize="12" textWrapWidth="20" textOrder="33"/>
 				<!-- natural=water: nada antes de z12; por area, primero los mas grandes y luego los mas pequenos -->
 				<switch nameTag="" textSize="12" textWrapWidth="20" textOrder="178">
 					<case minzoom="12" tag="natural" value="water" additional="area_rounded=1048576000"/>
