@@ -1494,6 +1494,7 @@
 			<case minzoom="13" tag="place" value="quarter"/>
 			<case minzoom="14" tag="place" value="city_block"/>
 			<case minzoom="13" tag="place" value="allotments"/>
+			<case minzoom="13" tag="natural" value="wetland"/>
 			<case minzoom="5" tag="place" value="island"/>
 			<case minzoom="5" tag="place" value="atoll"/>
 			<case minzoom="13" tag="place" value="islet"/>
