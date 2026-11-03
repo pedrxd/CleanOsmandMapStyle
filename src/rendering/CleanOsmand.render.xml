@@ -956,8 +956,7 @@
 			
 			<switch textColor="#654321" textWrapWidth="25" textHaloRadius="$textHaloRadiusDay">
 				<switch>
-					<case minzoom="12" tag="natural" value="peak" textOrder="80"/>
-					<case minzoom="13" tag="natural" value="volcano" textOrder="79"/>
+					<case minzoom="13" tag="natural" value="volcano" textOrder="79"/> <!-- picos (natural=peak): sin nombre en ningun zoom -->
 					<apply>
 						<switch>
 							<case eleUnits="feet" nameTag="ele_feet"/>
@@ -993,7 +992,7 @@
 				<case minzoom="14" tag="landuse" value="forest"/>
 				<case minzoom="14" tag="leisure" value="park"/>
 				<case minzoom="14" tag="natural" value="wood"/>
-				<case minzoom="14" tag="natural" value="wetland"/>
+				<case minzoom="13" tag="natural" value="wetland"/>
 				<case minzoom="15" tag="landuse" value="allotments"/>
 				<case minzoom="14" tag="landuse" value="industrial"/>
 				<case minzoom="14" tag="landuse" value="residential"/>
