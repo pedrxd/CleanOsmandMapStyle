@@ -3,7 +3,6 @@
 <renderingStyle name="CleanOsmand" depends="" defaultColor="#ffffff" version="1">
 	<renderingProperty attr="moreDetailed" name="More details" description="More details on map" type="boolean" possibleValues="" category="details"/>
 	<renderingProperty attr="noPolygons" name="Hide polygons (exc.buildings)" description="Make all areal land features on map transparent" type="boolean" possibleValues="" category="hide"/>
-	<renderingProperty attr="hideWoodScrubs" name="Hide wood and scrubs" description="Hide wood and scrubs" type="boolean" possibleValues="" category="hide"/>
 	<renderingProperty attr="hideBuildings" name="Hide buildings" description="Hide buildings" type="boolean" possibleValues="" category="hide"/>
 	<renderingProperty attr="hideNonVehicleHighways" name="Hide non-vehicle highways" description="Hide non-vehicle highways" type="boolean" possibleValues="" category="hide"/>
 	<renderingProperty attr="hideAccess" name="Hide access restrictions" description="Hide access type" type="boolean" possibleValues="" category="hide"/>
@@ -276,14 +275,20 @@
 	<renderingConstant name="waterColorNight" value="#1b2a3c"/>
 	<renderingConstant name="greenPastelColorDay" value="#a1e09a"/>
 	<renderingConstant name="greenPastelColorNight" value="#23301f"/>
+	<renderingConstant name="parkColorDayZ8" value="#d8f2d2"/>
+	<renderingConstant name="parkColorNightZ8" value="#1c261c"/>
+	<renderingConstant name="parkColorDayZ10" value="#c8e8c0"/>
+	<renderingConstant name="parkColorNightZ10" value="#212c21"/>
+	<renderingConstant name="parkColorDayZ12" value="#b8deae"/>
+	<renderingConstant name="parkColorNightZ12" value="#263326"/>
+	<renderingConstant name="parkColorDayZ14" value="#abe0a0"/>
+	<renderingConstant name="parkColorNightZ14" value="#283626"/>
+	<renderingConstant name="parkColorDayZ16" value="#a8e5a1"/>
+	<renderingConstant name="parkColorNightZ16" value="#2e3d2e"/>
 	<renderingAttribute name="parkColor">
 		<case nightMode="true" attrColorValue="$greenPastelColorNight"/>
 		<case attrColorValue="$greenPastelColorDay"/>
 	</renderingAttribute>
-	<renderingConstant name="woodColorDay" value="$greenPastelColorDay"/>
-	<renderingConstant name="woodColorNight" value="$greenPastelColorNight"/>
-	<renderingConstant name="allotmentsColorDay" value="$greenPastelColorDay"/>
-	<renderingConstant name="allotmentsColorNight" value="$greenPastelColorNight"/>
 	<renderingConstant name="parkingColorDay" value="#ededed"/>
 	<renderingConstant name="parkingColorNight" value="#303030"/>
 	<renderingConstant name="residentialColorDay" value="#f4f4f4"/>
@@ -563,17 +568,19 @@
 			<case tag="amenity" value="parking"/>
 			<case tag="railway" value="station" ignorePolygonAsPointArea="true"/>
 			<case tag="amenity" value="place_of_worship" ignorePolygonAsPointArea="true"/>
-			<case tag="natural" value="wetland" order="6"/>
 			<case tag="aerialway" value="station" ignorePolygonAsPointArea="true"/>
 			<case tag="public_transport" value="platform" order="12"/>
 			<case tag="public_transport" value="" order="5" ignorePolygonAsPointArea="true"/>
 			<case tag="landuse" value="residential" order="4"/>
 			<case tag="landuse" value="construction" order="4"/>
-			<case tag="natural" value="wood"/>
-			<case tag="natural" value="scrub" order="6"/>
+			<case tag="natural" value="land" order="1"/>
+			<case tag="place" value="island" order="1"/>
+			<case tag="place" value="islet" order="1"/>
+			<case tag="leisure" value="park" order="6"/>
+			<case tag="leisure" value="nature_reserve" order="6"/>
+			<case tag="boundary" value="national_park" order="6"/>
+			<case tag="boundary" value="protected_area" order="6"/>
 			<switch order="5">
-				<case tag="natural" value="water"/>
-				<case tag="waterway" value="riverbank"/>
 				<case tag="aeroway" value="aerodrome"/>
 				<case tag="aeroway" value="apron"/>
 				<case tag="aeroway" value="terminal"/>
@@ -582,9 +589,19 @@
 			<case tag="building" value="no" order="-1"/>
 			<case tag="landuse" value="basin" additional="basin=detention" order="-1"/>
 			<case tag="man_made" value="bridge" order="10"/>
-			<case tag="waterway" value="dock"/>
 			<case tag="aeroway" value="runway"/>
 			<case tag="addr:housenumber" value="" ignorePolygonAsPointArea="true"/>
+			<switch order="90">
+				<case tag="natural" value="coastline"/>
+				<case tag="natural" value="water"/>
+				<case tag="natural" value="bay"/>
+				<case tag="landuse" value="reservoir"/>
+				<case tag="landuse" value="water"/>
+				<case tag="landuse" value="basin"/>
+				<case tag="waterway" value="riverbank"/>
+				<case tag="waterway" value="canal"/>
+				<case tag="waterway" value="dock"/>
+			</switch>
 			<case tag="" value="" order="5"/>
 			<apply_if hideUnderground="true">
 				<apply_if layer="-1" order="-1"/>
@@ -1002,11 +1019,7 @@
 			<switch textSize="12" textColor="#204800" textHaloColor="#d3e6c4" textWrapWidth="20" textItalic="true" textOrder="144" nameTag="">
 				<case minzoom="14" tag="landuse" value="cemetery"/>
 				<case minzoom="14" tag="landuse" value="graveyard"/>
-				<case minzoom="14" tag="landuse" value="forest"/>
 				<case minzoom="14" tag="leisure" value="park"/>
-				<case minzoom="14" tag="natural" value="wood"/>
-				<case minzoom="13" tag="natural" value="wetland"/>
-				<case minzoom="15" tag="landuse" value="allotments"/>
 				<case minzoom="14" tag="landuse" value="industrial"/>
 				<case minzoom="14" tag="landuse" value="residential"/>
 				<case minzoom="15" tag="landuse" value="wastewater_plant"/>
@@ -1220,7 +1233,6 @@
 					<case minzoom="13" tag="place" value="quarter" textItalic="true" textOrder="137"/>
 					<case minzoom="14" tag="place" value="city_block" textItalic="true" textOrder="136"/>
 					<case minzoom="12" tag="place" value="hamlet" textOrder="42"/>
-					<case minzoom="13" tag="place" value="allotments" textOrder="110"/>
 					<!-- farm, isolated_dwelling y locality (lugares en mitad de la nada): sin nombre -->
 					<apply textSize="13"/>
 					<apply_if minzoom="16" textSize="15"/>
@@ -1465,12 +1477,6 @@
 				<case minzoom="13" tag="landuse" value="water" nameTag="" textSize="12" textWrapWidth="20" textOrder="218"/>
 				<case minzoom="13" tag="landuse" value="reservoir" nameTag="" textSize="12" textWrapWidth="20" textOrder="218"/>
 				<case minzoom="13" tag="landuse" value="basin" nameTag="" textSize="12" textWrapWidth="20" textOrder="218"/>
-				<case minzoom="17" tag="leisure" value="swimming_pool" nameTag="" textSize="12" textWrapWidth="20" textOrder="218">
-					<apply_if additional="access=private" disable="true"/>
-					<apply_if additional="access=no" disable="true"/>
-					<apply_if additional="indoor=yes" disable="true"/>
-					<apply_if additional="location=indoor" disable="true"/>
-				</case>
 
 				<case minzoom="14" tag="leisure" value="marina" nameTag="" textSize="12" textColor="#0000ff" textWrapWidth="30"/>
 				<apply_if nightMode="true" textColor="#90e4ff" textHaloColor="#aa003153" textHaloRadius="$textHaloRadiusNight"/>
@@ -1527,25 +1533,6 @@
 		</switch>
 
 		<switch noPolygons="false">
-			<switch hideWoodScrubs="false">
-				<switch minzoom="6">
-					<case tag="natural" value="wood"/>
-					<case tag="landuse" value="forest"/>
-					<case tag="natural" value="scrub"/>
-					<apply color="$woodColorDay">
-						<apply_if nightMode="true" color="$woodColorNight"/>
-					</apply>
-				</switch>
-				<case minzoom="10" tag="natural" value="wetland" shader="wetland">
-					<apply_if nightMode="true" color="#0b322d" shader=""/>
-				</case>
-				<case minzoom="12" tag="landuse" value="orchard" shader="orchard">
-					<apply_if nightMode="true" color="#063b10" shader=""/>
-				</case>
-				<case minzoom="12" tag="landuse" value="vineyard" shader="vineyard2">
-					<apply_if nightMode="true" color="#24442a" shader=""/>
-				</case>
-			</switch>
 			<switch>
 				<case minzoom="12" tag="landuse" value="cemetery" color="$greenPastelColorDay">
 					<apply_if nightMode="true" color="$greenPastelColorNight"/>
@@ -1557,32 +1544,26 @@
 					<apply_if nightMode="true" shader="beach2night"/>
 				</case>
 			</switch>
-			<case minzoom="10" tag="landuse" value="allotments" color="$greenPastelColorDay">
-				<apply_if nightMode="true" color="$greenPastelColorNight"/>
-			</case>
-			<case minzoom="8" tag="leisure" value="park" color="$greenPastelColorDay">
-				<apply_if nightMode="true" color="$greenPastelColorNight"/>
-			</case>
-			<switch minzoom="10">
-				<case tag="leisure" value="garden"/>
-				<case tag="leisure" value="common"/>
-				<case tag="leisure" value="playground"/>
-				<case tag="leisure" value="pitch"/>
-				<case tag="leisure" value="golf_course"/>
-				<case tag="leisure" value="dog_park"/>
+			<switch minzoom="8">
+				<case tag="leisure" value="park"/>
 				<case tag="leisure" value="nature_reserve"/>
-				<case tag="landuse" value="grass"/>
-				<case tag="landuse" value="meadow"/>
-				<case tag="landuse" value="recreation_ground"/>
-				<case tag="landuse" value="greenfield"/>
-				<case tag="landuse" value="village_green"/>
-				<case tag="landuse" value="allotments"/>
-				<case tag="natural" value="grassland"/>
-				<case tag="natural" value="heath"/>
-				<case tag="landcover" value="grass"/>
-				<apply color="$greenPastelColorDay">
-					<apply_if nightMode="true" color="$greenPastelColorNight"/>
-				</apply>
+				<case tag="boundary" value="national_park"/>
+				<case tag="boundary" value="protected_area"/>
+				<apply_if minzoom="8" maxzoom="9" color="$parkColorDayZ8">
+					<apply_if nightMode="true" color="$parkColorNightZ8"/>
+				</apply_if>
+				<apply_if minzoom="10" maxzoom="11" color="$parkColorDayZ10">
+					<apply_if nightMode="true" color="$parkColorNightZ10"/>
+				</apply_if>
+				<apply_if minzoom="12" maxzoom="13" color="$parkColorDayZ12">
+					<apply_if nightMode="true" color="$parkColorNightZ12"/>
+				</apply_if>
+				<apply_if minzoom="14" maxzoom="15" color="$parkColorDayZ14">
+					<apply_if nightMode="true" color="$parkColorNightZ14"/>
+				</apply_if>
+				<apply_if minzoom="16" color="$parkColorDayZ16">
+					<apply_if nightMode="true" color="$parkColorNightZ16"/>
+				</apply_if>
 			</switch>
 
 			<case minzoom="10" tag="landuse" value="military">
@@ -1624,12 +1605,6 @@
 				<case minzoom="7" tag="landuse" value="reservoir"/>
 				<case minzoom="7" tag="landuse" value="water"/>
 				<case minzoom="10" tag="landuse" value="basin"/>
-				<case minzoom="15" tag="leisure" value="swimming_pool">
-					<apply_if additional="access=private" disable="true"/>
-					<apply_if additional="access=no" disable="true"/>
-					<apply_if additional="indoor=yes" disable="true"/>
-					<apply_if additional="location=indoor" disable="true"/>
-				</case>
 				<apply color="$waterColorDay" color_0="$waterColorDay">
 					<apply_if nightMode="true" color="$waterColorNight" color_0="$waterColorNight"/>
 				</apply>
@@ -2121,7 +2096,7 @@
 				<case maxzoom="19" strokeWidth="6.5"/>
 				<case minzoom="20" strokeWidth="8"/>
 			</case>
-			<apply_if hideWoodScrubs="false" color="$trackDayColor"/>
+			<apply color="$trackDayColor"/>
 			<apply_if nightMode="true" color="$trackNightColor" shadowRadius="0"/>
 			<apply_if additional="bridge=yes" minzoom="15" color__1="#333333" color_0="#ffffff">
 				<case maxzoom="15" strokeWidth__1="4:4" strokeWidth_0="4"/>
