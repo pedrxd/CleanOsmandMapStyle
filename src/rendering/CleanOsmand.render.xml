@@ -705,12 +705,12 @@
 					<apply_if layer="-1" order="57"/>
 					<apply_if additional="layer=-2" order="36"/>
 				</case>
-				<case tag="highway" value="unclassified" order="79">
-					<apply_if layer="1" order="102"/>
-					<apply_if additional="layer=2" order="132"/>
-					<apply_if additional="layer=3" order="160"/>
-					<apply_if layer="-1" order="57"/>
-					<apply_if additional="layer=-2" order="36"/>
+				<case tag="highway" value="unclassified" order="80">
+					<apply_if layer="1" order="103"/>
+					<apply_if additional="layer=2" order="133"/>
+					<apply_if additional="layer=3" order="161"/>
+					<apply_if layer="-1" order="58"/>
+					<apply_if additional="layer=-2" order="37"/>
 				</case>
 				<case tag="highway" value="residential" order="78">
 					<apply_if layer="1" order="101"/>
@@ -782,7 +782,7 @@
 					<apply_if tag="highway" value="secondary_link" order="46"/>
 					<apply_if tag="highway" value="tertiary" order="58"/>
 					<apply_if tag="highway" value="tertiary_link" order="45"/>
-					<apply_if tag="highway" value="unclassified" order="57"/>
+					<apply_if tag="highway" value="unclassified" order="58"/>
 					<apply_if tag="highway" value="residential" order="57"/>
 					<apply_if tag="highway" value="service" order="56"/>
 					<apply_if tag="highway" value="living_street" order="56"/>
@@ -822,7 +822,7 @@
 				<case minzoom="10" tag="highway" value="primary" textOrder="55" textHaloColor="$primaryRoadColor"/>
 				<case minzoom="12" tag="highway" value="secondary" textOrder="59" textHaloColor="$secondaryRoadColor"/>
 				<case minzoom="13" tag="highway" value="tertiary" textOrder="93" textHaloColor="$tertiaryRoadColor"/>
-				<case minzoom="14" tag="highway" value="unclassified" textOrder="119" textHaloColor="$residentialRoadColor"/>
+				<case minzoom="14" tag="highway" value="unclassified" textOrder="119" textHaloColor="$tertiaryRoadColor"/>
 				<apply textMinDistance="150" textColor="#fff38c" textSize="12" textBold="true" textHaloRadius="4"/>
 				<apply_if nightMode="true" textColor="#fff38c"/>
 			</switch>
@@ -887,6 +887,8 @@
 						<case tag="highway" value="living_street" textOrder="130"/>
 						<case minzoom="14" tag="highway" value="rest_area" textOrder="131"/>
 						<apply textHaloColor="$residentialRoadColor"/>
+						<apply_if tag="highway" value="unclassified" textHaloColor="$tertiaryRoadColor"/>
+						<apply_if tag="area:highway" value="unclassified" textHaloColor="$tertiaryRoadColor"/>
 					</switch>
 					<switch minzoom="14" nameTag="" textHaloRadius="$textHaloRadiusDay">
 						<case tag="highway" value="pedestrian" textOrder="126"/>
@@ -1652,8 +1654,11 @@
 			<case minzoom="15" tag="area:highway" value="tertiary" color="#ffa352"/>
 			<apply_if nightMode="true" color="$primaryRoadAreaNightColor"/>
 		</switch>
+		<switch>
+			<case minzoom="15" tag="area:highway" value="unclassified" color="#ffa352"/>
+			<apply_if nightMode="true" color="$primaryRoadAreaNightColor"/>
+		</switch>
 		<switch minzoom="16" color="#7d7d7d">
-			<case tag="area:highway" value="unclassified"/>
 			<case tag="area:highway" value="residential"/>
 			<case tag="man_made" value="bridge"/>
 			<apply_if nightMode="true" color="$primaryRoadAreaNightColor"/>
@@ -1923,8 +1928,42 @@
 
 			</switch>
 
-			<switch>
+			<switch minzoom="11">
 				<case tag="highway" value="unclassified"/>
+				<apply color="$tertiaryRoadColor"/>
+				<apply_if cap="ROUND">
+					<case maxzoom="11" strokeWidth="0.8:0.8"/>
+					<case maxzoom="12" strokeWidth="1.2:1.2"/>
+					<case maxzoom="13" strokeWidth="2:2"/>
+					<case maxzoom="14" strokeWidth="2.7:2.7"/>
+					<case maxzoom="15" strokeWidth="3.8:3.8"/>
+					<case maxzoom="16" strokeWidth="5:5"/>
+					<case maxzoom="17" strokeWidth="6.5:6.5"/>
+					<case maxzoom="18" strokeWidth="9:9"/>
+					<case minzoom="19" strokeWidth="10.5:10.5"/>
+				</apply_if>
+				<apply_if additional="tunnel=yes" pathEffect="4_4" cap="BUTT"/>
+				<apply_if additional="covered=yes" pathEffect="4_4" cap="BUTT"/>
+				<apply_if additional="bridge=yes" minzoom="14" color_0="$bridgeDayColor" cap="SQUARE" cap_0="BUTT">
+					<case maxzoom="14" strokeWidth_0="3.7:4.5"/>
+					<case maxzoom="15" strokeWidth_0="5.5:6"/>
+					<case maxzoom="16" strokeWidth_0="6.5:7"/>
+					<case maxzoom="17" strokeWidth_0="8:9"/>
+					<case maxzoom="18" strokeWidth_0="11:13"/>
+					<case minzoom="19" strokeWidth_0="12:14"/>
+					<apply_if nightMode="true" color_0="$bridgeNightColor"/>
+				</apply_if>
+				<apply_if additional="construction=yes" pathEffect="8_4" cap="BUTT"/>
+				<apply_if hideAccess="false">
+					<switch minzoom="15">
+						<case additional="access=no"/>
+						<case additional="access=private"/>
+						<apply color="$accessNoColor" pathEffect="6_1.5" cap="BUTT"/>
+					</switch>
+				</apply_if>
+			</switch>
+
+			<switch>
 				<case tag="highway" value="residential"/>
 				<case tag="highway" value="living_street"/>
 				<apply color="$residentialRoadColor"/>
