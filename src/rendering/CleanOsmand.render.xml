@@ -286,8 +286,8 @@
 	<renderingConstant name="allotmentsColorNight" value="$greenPastelColorNight"/>
 	<renderingConstant name="parkingColorDay" value="#ededed"/>
 	<renderingConstant name="parkingColorNight" value="#303030"/>
-	<renderingConstant name="residentialColorDay" value="#e4e4e4"/>
-	<renderingConstant name="residentialColorNight" value="#22252c"/>
+	<renderingConstant name="residentialColorDay" value="#f4f4f4"/>
+	<renderingConstant name="residentialColorNight" value="#1a1a1a"/>
 	<renderingConstant name="industrialColorDay" value="#efeff2"/>
 	<renderingConstant name="industrialColorNight" value="#232327"/>
 	<renderingAttribute name="accessNoColor">
