@@ -26,6 +26,13 @@ main (trunk)
 3. Push: `git push -u origin release/v1.0`
 4. La CI genera automáticamente la release en GitHub con el `.osf`
 
+## Documentación del estilo (STYLE.md)
+
+`STYLE.md` (en la raíz del repo) es la guía esquemática de cómo se visualiza el mapa: zooms, colores, anchos y elementos que se pintan en cada sección del XML (`src/rendering/CleanOsmand.render.xml`).
+
+- Antes de hacer cualquier cambio en el XML del estilo, **lee `STYLE.md`** para saber qué se pinta ahora y dónde está cada regla.
+- Después de modificar el XML del estilo, **actualiza `STYLE.md` en el mismo commit/PR** para que siga describiendo fielmente el renderizado.
+
 ## Desarrollo local
 
 ```bash
