@@ -275,6 +275,16 @@
 	<renderingConstant name="waterColorNight" value="#1b2a3c"/>
 	<renderingConstant name="greenPastelColorDay" value="#a1e09a"/>
 	<renderingConstant name="greenPastelColorNight" value="#23301f"/>
+	<renderingConstant name="parkColorDayZ8" value="#e3f4dd"/>
+	<renderingConstant name="parkColorNightZ8" value="#141a12"/>
+	<renderingConstant name="parkColorDayZ10" value="#d5ecca"/>
+	<renderingConstant name="parkColorNightZ10" value="#181f16"/>
+	<renderingConstant name="parkColorDayZ12" value="#c3e6b8"/>
+	<renderingConstant name="parkColorNightZ12" value="#1d261b"/>
+	<renderingConstant name="parkColorDayZ14" value="#b1dfa6"/>
+	<renderingConstant name="parkColorNightZ14" value="#222c1f"/>
+	<renderingConstant name="parkColorDayZ16" value="#a8e5a1"/>
+	<renderingConstant name="parkColorNightZ16" value="#283625"/>
 	<renderingAttribute name="parkColor">
 		<case nightMode="true" attrColorValue="$greenPastelColorNight"/>
 		<case attrColorValue="$greenPastelColorDay"/>
@@ -1454,12 +1464,25 @@
 					<apply_if nightMode="true" shader="beach2night"/>
 				</case>
 			</switch>
-			<case minzoom="8" tag="leisure" value="park" color="$greenPastelColorDay">
-				<apply_if nightMode="true" color="$greenPastelColorNight"/>
-			</case>
-			<case minzoom="10" tag="leisure" value="nature_reserve" color="$greenPastelColorDay">
-				<apply_if nightMode="true" color="$greenPastelColorNight"/>
-			</case>
+			<switch minzoom="8">
+				<case tag="leisure" value="park"/>
+				<case tag="leisure" value="nature_reserve"/>
+				<apply_if minzoom="8" maxzoom="9" color="$parkColorDayZ8">
+					<apply_if nightMode="true" color="$parkColorNightZ8"/>
+				</apply_if>
+				<apply_if minzoom="10" maxzoom="11" color="$parkColorDayZ10">
+					<apply_if nightMode="true" color="$parkColorNightZ10"/>
+				</apply_if>
+				<apply_if minzoom="12" maxzoom="13" color="$parkColorDayZ12">
+					<apply_if nightMode="true" color="$parkColorNightZ12"/>
+				</apply_if>
+				<apply_if minzoom="14" maxzoom="15" color="$parkColorDayZ14">
+					<apply_if nightMode="true" color="$parkColorNightZ14"/>
+				</apply_if>
+				<apply_if minzoom="16" color="$parkColorDayZ16">
+					<apply_if nightMode="true" color="$parkColorNightZ16"/>
+				</apply_if>
+			</switch>
 
 			<case minzoom="10" tag="landuse" value="military">
 				<apply_if maxzoom="13" strokeWidth_2="1:1"/>

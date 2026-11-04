@@ -11,7 +11,7 @@ Estilo de renderizado minimalista y limpio para OsmAnd. Es autónomo (no depende
 - Nombres de calle escalonados: las vías importantes muestran nombre antes.
 - Edificios completamente ocultos (sin relleno ni contorno).
 - POIs mínimos y sin vías no motorizadas (aceras, ciclovías, senderos, escaleras, pasos de peatones).
-- Verde pastel unificado (#a1e09a) para parques, jardines, bosques, prados, zonas verdes y huertos.
+- Verde solo en parques y reservas naturales (sierras, montañas y parques naturales): pastel muy suave de lejos (#e3f4dd en z8-z9, visible segun tamaño) que se intensifica al acercarse hasta #a8e5a1 como maximo en z16+ (solo un poco mas claro que el #a1e09a anterior). Huertos, bosques, maleza y otros cultivos ya no se pintan de verde.
 - Agua en azul claro (#c9e6f5).
 - Ruta de navegación en azul translúcido con borde amarillo.
 
