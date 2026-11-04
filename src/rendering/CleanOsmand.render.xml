@@ -573,9 +573,14 @@
 			<case tag="public_transport" value="" order="5" ignorePolygonAsPointArea="true"/>
 			<case tag="landuse" value="residential" order="4"/>
 			<case tag="landuse" value="construction" order="4"/>
+			<case tag="natural" value="land" order="1"/>
+			<case tag="place" value="island" order="1"/>
+			<case tag="place" value="islet" order="1"/>
+			<case tag="leisure" value="park" order="6"/>
+			<case tag="leisure" value="nature_reserve" order="6"/>
+			<case tag="boundary" value="national_park" order="6"/>
+			<case tag="boundary" value="protected_area" order="6"/>
 			<switch order="5">
-				<case tag="natural" value="water"/>
-				<case tag="waterway" value="riverbank"/>
 				<case tag="aeroway" value="aerodrome"/>
 				<case tag="aeroway" value="apron"/>
 				<case tag="aeroway" value="terminal"/>
@@ -584,9 +589,19 @@
 			<case tag="building" value="no" order="-1"/>
 			<case tag="landuse" value="basin" additional="basin=detention" order="-1"/>
 			<case tag="man_made" value="bridge" order="10"/>
-			<case tag="waterway" value="dock"/>
 			<case tag="aeroway" value="runway"/>
 			<case tag="addr:housenumber" value="" ignorePolygonAsPointArea="true"/>
+			<switch order="90">
+				<case tag="natural" value="coastline"/>
+				<case tag="natural" value="water"/>
+				<case tag="natural" value="bay"/>
+				<case tag="landuse" value="reservoir"/>
+				<case tag="landuse" value="water"/>
+				<case tag="landuse" value="basin"/>
+				<case tag="waterway" value="riverbank"/>
+				<case tag="waterway" value="canal"/>
+				<case tag="waterway" value="dock"/>
+			</switch>
 			<case tag="" value="" order="5"/>
 			<apply_if hideUnderground="true">
 				<apply_if layer="-1" order="-1"/>
@@ -1532,6 +1547,8 @@
 			<switch minzoom="8">
 				<case tag="leisure" value="park"/>
 				<case tag="leisure" value="nature_reserve"/>
+				<case tag="boundary" value="national_park"/>
+				<case tag="boundary" value="protected_area"/>
 				<apply_if minzoom="8" maxzoom="9" color="$parkColorDayZ8">
 					<apply_if nightMode="true" color="$parkColorNightZ8"/>
 				</apply_if>
